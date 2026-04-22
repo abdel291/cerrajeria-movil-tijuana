@@ -14,7 +14,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Nunito:wght@800;900&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -43,6 +43,7 @@
             --font-display: 'Bebas Neue', sans-serif;
             --font-body: 'Barlow', sans-serif;
             --font-condensed: 'Barlow Condensed', sans-serif;
+            --font-rounded: 'Nunito', sans-serif;
         }
 
         *, *::before, *::after {
@@ -118,10 +119,10 @@
             color: white;
             text-align: center;
             padding: 8px 16px;
-            font-family: var(--font-condensed);
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            font-family: var(--font-rounded);
+            font-weight: 900;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -136,7 +137,8 @@
 
         .topbar a {
             color: white;
-            font-weight: 700;
+            font-family: var(--font-rounded);
+            font-weight: 900;
             text-decoration: underline;
         }
 
@@ -256,8 +258,8 @@
             color: white;
             padding: 10px 20px;
             border-radius: 8px;
-            font-family: var(--font-condensed);
-            font-weight: 700;
+            font-family: var(--font-rounded);
+            font-weight: 900;
             font-size: 1rem;
             letter-spacing: 1px;
             transition: all 0.25s;
@@ -279,8 +281,8 @@
             color: white;
             padding: 10px 20px;
             border-radius: 8px;
-            font-family: var(--font-condensed);
-            font-weight: 700;
+            font-family: var(--font-rounded);
+            font-weight: 900;
             font-size: 1rem;
             letter-spacing: 1px;
             transition: all 0.25s;
@@ -422,8 +424,8 @@
             color: white;
             padding: 16px 32px;
             border-radius: 12px;
-            font-family: var(--font-condensed);
-            font-weight: 700;
+            font-family: var(--font-rounded);
+            font-weight: 900;
             font-size: 1.15rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -445,8 +447,8 @@
             padding: 16px 32px;
             border-radius: 12px;
             border: 2px solid var(--whatsapp);
-            font-family: var(--font-condensed);
-            font-weight: 700;
+            font-family: var(--font-rounded);
+            font-weight: 900;
             font-size: 1.15rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -1066,11 +1068,17 @@
         }
 
         .cta-phone-big {
-            font-family: var(--font-display);
+            font-family: var(--font-rounded);
+            font-weight: 900;
             font-size: 2.5rem;
             color: var(--accent-amber);
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             margin-bottom: 32px;
+        }
+
+        .footer-contact-item a[href^="tel"] {
+            font-family: var(--font-rounded);
+            font-weight: 800;
         }
 
         /* ============================================
@@ -1681,6 +1689,7 @@
             letter-spacing: 1px;
             color: #fff;
             margin-bottom: 20px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.6);
         }
 
         .controls-highlight {
@@ -1757,8 +1766,8 @@
             gap: 10px;
             background: var(--accent-green);
             color: #07140e;
-            font-family: var(--font-condensed);
-            font-weight: 700;
+            font-family: var(--font-rounded);
+            font-weight: 900;
             font-size: 0.95rem;
             letter-spacing: 1px;
             padding: 14px 28px;
@@ -1780,8 +1789,8 @@
             gap: 10px;
             background: transparent;
             color: #fff;
-            font-family: var(--font-condensed);
-            font-weight: 700;
+            font-family: var(--font-rounded);
+            font-weight: 900;
             font-size: 0.95rem;
             letter-spacing: 1px;
             padding: 14px 24px;
@@ -2348,44 +2357,38 @@
                 <div class="controls-banner-content fade-in">
                     <div class="controls-banner-label">
                         <i data-lucide="radio" style="width:16px;height:16px"></i>
-                        Servicio Estrella
+                        <span data-i18n="ctrl-label">Servicio Estrella</span>
                     </div>
-                    <h2 class="controls-banner-title">
-                        CONTROLES &amp; ACCESOS<br>
-                        <span class="controls-highlight">CLONAMOS TU CONTROL</span><br>
-                        AL INSTANTE
-                    </h2>
-                    <p class="controls-banner-desc">
-                        ¿Perdiste o dañaste tu control de acceso? Sin cita previa, sin esperar — duplicamos y programamos controles para portones eléctricos, garage, privadas y accesos residenciales en minutos.
-                    </p>
+                    <h2 class="controls-banner-title" data-i18n="ctrl-title">CONTROLES &amp; ACCESOS<br><span class="controls-highlight">CLONAMOS TU CONTROL</span><br>AL INSTANTE</h2>
+                    <p class="controls-banner-desc" data-i18n="ctrl-desc">¿Perdiste o dañaste tu control de acceso? Sin cita previa, sin esperar — duplicamos y programamos controles para portones eléctricos, garage, privadas y accesos residenciales en minutos.</p>
 
                     <ul class="controls-list">
                         <li>
                             <span class="controls-list-icon"><i data-lucide="copy" style="width:18px;height:18px"></i></span>
                             <div>
-                                <strong>Clonación de controles</strong>
-                                <span>Copiamos tu control existente sin programación especial</span>
+                                <strong data-i18n="ctrl-li1-strong">Clonación de controles</strong>
+                                <span data-i18n="ctrl-li1-span">Copiamos tu control existente sin programación especial</span>
                             </div>
                         </li>
                         <li>
                             <span class="controls-list-icon"><i data-lucide="key-round" style="width:18px;height:18px"></i></span>
                             <div>
-                                <strong>Perdiste tu control de acceso</strong>
-                                <span>Lo reemplazamos y programamos con tu portón original</span>
+                                <strong data-i18n="ctrl-li2-strong">Perdiste tu control de acceso</strong>
+                                <span data-i18n="ctrl-li2-span">Lo reemplazamos y programamos con tu portón original</span>
                             </div>
                         </li>
                         <li>
                             <span class="controls-list-icon"><i data-lucide="home" style="width:18px;height:18px"></i></span>
                             <div>
-                                <strong>Controles para garage y privadas</strong>
-                                <span>Compatible con Linear, Liftmaster, Chamberlain, Sommer y más</span>
+                                <strong data-i18n="ctrl-li3-strong">Controles para garage y privadas</strong>
+                                <span data-i18n="ctrl-li3-span">Compatible con Linear, Liftmaster, Chamberlain, Sommer y más</span>
                             </div>
                         </li>
                         <li>
                             <span class="controls-list-icon"><i data-lucide="zap" style="width:18px;height:18px"></i></span>
                             <div>
-                                <strong>Servicio a domicilio inmediato</strong>
-                                <span>Vamos hasta tu casa o privada — Tijuana y Rosarito</span>
+                                <strong data-i18n="ctrl-li4-strong">Servicio a domicilio inmediato</strong>
+                                <span data-i18n="ctrl-li4-span">Vamos hasta tu casa o privada — Tijuana y Rosarito</span>
                             </div>
                         </li>
                     </ul>
@@ -2393,7 +2396,7 @@
                     <div class="controls-banner-ctas">
                         <a href="https://wa.me/5216641117147?text=Hola%2C%20necesito%20clonar%20o%20programar%20un%20control%20de%20acceso.%20%C2%BFEst%C3%A1n%20disponibles%3F" target="_blank" class="btn-controls-wa">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.317 0-4.478-.682-6.308-1.853l-.442-.282-3.106 1.041 1.041-3.106-.282-.442A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                            Cotizar por WhatsApp
+                            <span data-i18n="ctrl-cta-wa">Cotizar por WhatsApp</span>
                         </a>
                         <a href="tel:6641117147" class="btn-controls-call">
                             <i data-lucide="phone" style="width:18px;height:18px"></i>
@@ -2423,15 +2426,15 @@
                     <div class="controls-stats-row">
                         <div class="controls-stat">
                             <div class="controls-stat-num">+500</div>
-                            <div class="controls-stat-label">Controles clonados</div>
+                            <div class="controls-stat-label" data-i18n="ctrl-stat1-label">Controles clonados</div>
                         </div>
                         <div class="controls-stat">
                             <div class="controls-stat-num">~15 min</div>
-                            <div class="controls-stat-label">Tiempo promedio</div>
+                            <div class="controls-stat-label" data-i18n="ctrl-stat2-label">Tiempo promedio</div>
                         </div>
                         <div class="controls-stat controls-stat--alt">
                             <div class="controls-stat-num">100%</div>
-                            <div class="controls-stat-label">Garantizado</div>
+                            <div class="controls-stat-label" data-i18n="ctrl-stat3-label">Garantizado</div>
                         </div>
                     </div>
                     <div class="controls-brands-row">
@@ -2442,7 +2445,7 @@
                         <span class="controls-brand-tag">Genie</span>
                         <span class="controls-brand-tag">Came</span>
                         <span class="controls-brand-tag">Faac</span>
-                        <span class="controls-brand-tag">+ más</span>
+                        <span class="controls-brand-tag" data-i18n="ctrl-brands-more">+ más</span>
                     </div>
                 </div>
 
@@ -2540,7 +2543,6 @@
                         <div class="card-slide" onclick="openCardLightbox(this.querySelector('img'))"><img src="images/cards/card01.jpeg" alt="Servicio cerrajería automotriz"><div class="card-zoom-overlay">+</div></div>
                         <div class="card-slide" onclick="openCardLightbox(this.querySelector('img'))"><img src="images/cards/card02.jpeg" alt="Programación llaves con chip"><div class="card-zoom-overlay">+</div></div>
                         <div class="card-slide" onclick="openCardLightbox(this.querySelector('img'))"><img src="images/cards/card03.jpeg" alt="Controles para portones"><div class="card-zoom-overlay">+</div></div>
-                        <div class="card-slide" onclick="openCardLightbox(this.querySelector('img'))"><img src="images/cards/card04.jpeg" alt="Cerrajería residencial"><div class="card-zoom-overlay">+</div></div>
                         <div class="card-slide" onclick="openCardLightbox(this.querySelector('img'))"><img src="images/cards/card05.jpeg" alt="Llaves de proximidad"><div class="card-zoom-overlay">+</div></div>
                         <div class="card-slide" onclick="openCardLightbox(this.querySelector('img'))"><img src="images/cards/card06.jpeg" alt="Servicio urgencia 24hrs"><div class="card-zoom-overlay">+</div></div>
                         <div class="card-slide" onclick="openCardLightbox(this.querySelector('img'))"><img src="images/cards/card07.jpeg" alt="Unidad móvil equipada"><div class="card-zoom-overlay">+</div></div>
@@ -2688,32 +2690,32 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo-text">CERRAJERÍA <span>MÓVIL</span><br>TIJUANA</div>
-                    <p>Especialistas en cerrajería automotriz y residencial con más de 30 años de experiencia. Servicio profesional a domicilio en toda Tijuana.</p>
+                    <p data-i18n="footer-brand-desc">Especialistas en cerrajería automotriz y residencial con más de 30 años de experiencia. Servicio profesional a domicilio en toda Tijuana.</p>
                 </div>
                 <div class="footer-col">
-                    <h4>Servicios</h4>
+                    <h4 data-i18n="footer-col1-title">Servicios</h4>
                     <ul>
-                        <li><a href="#servicios">Cerrajería Automotriz</a></li>
-                        <li><a href="#servicios">Llaves con Chip</a></li>
-                        <li><a href="#servicios">Controles para Portones</a></li>
-                        <li><a href="#servicios">Cerrajería Residencial</a></li>
-                        <li><a href="#servicios">Llaves de Proximidad</a></li>
-                        <li><a href="#servicios">Servicio de Urgencia</a></li>
+                        <li><a href="#servicios" data-i18n="footer-s1">Cerrajería Automotriz</a></li>
+                        <li><a href="#servicios" data-i18n="footer-s2">Llaves con Chip</a></li>
+                        <li><a href="#servicios" data-i18n="footer-s3">Controles para Portones</a></li>
+                        <li><a href="#servicios" data-i18n="footer-s4">Cerrajería Residencial</a></li>
+                        <li><a href="#servicios" data-i18n="footer-s5">Llaves de Proximidad</a></li>
+                        <li><a href="#servicios" data-i18n="footer-s6">Servicio de Urgencia</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Navegación</h4>
+                    <h4 data-i18n="footer-col2-title">Navegación</h4>
                     <ul>
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#servicios">Servicios</a></li>
-                        <li><a href="#nosotros">Nosotros</a></li>
-                        <li><a href="#galeria">Galería</a></li>
-                        <li><a href="#cobertura">Cobertura</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
+                        <li><a href="#inicio" data-i18n="nav-home">Inicio</a></li>
+                        <li><a href="#servicios" data-i18n="nav-services">Servicios</a></li>
+                        <li><a href="#nosotros" data-i18n="nav-about">Nosotros</a></li>
+                        <li><a href="#galeria" data-i18n="nav-gallery">Galería</a></li>
+                        <li><a href="#cobertura" data-i18n="nav-coverage">Cobertura</a></li>
+                        <li><a href="#contacto" data-i18n="nav-contact">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Contacto</h4>
+                    <h4 data-i18n="footer-col3-title">Contacto</h4>
                     <div class="footer-contact-item">
                         <i data-lucide="map-pin" style="width:18px;height:18px"></i>
                         <span>Espiga 1245, Las Huertas 4ta. Sección, Tijuana, B.C. 22117</span>
@@ -2728,13 +2730,13 @@
                     </div>
                     <div class="footer-contact-item">
                         <i data-lucide="clock" style="width:18px;height:18px"></i>
-                        <span>Lunes a Domingo — 24 Horas</span>
+                        <span data-i18n="footer-hours">Lunes a Domingo — 24 Horas</span>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>© 2026 Cerrajería Móvil Tijuana. Todos los derechos reservados.</span>
-                <span>Diseñado por AI Decoded Agency</span>
+                <span data-i18n="footer-copy">© 2026 Cerrajería Móvil Tijuana. Todos los derechos reservados.</span>
+                <span data-i18n="footer-credit">Diseñado por AI Decoded Agency</span>
             </div>
         </div>
     </footer>
@@ -2885,7 +2887,7 @@
             if (window.innerWidth <= 480) return 1;
             if (window.innerWidth <= 768) return 2;
             if (window.innerWidth <= 1024) return 3;
-            return 5;
+            return 4;
         }
 
         function adsNav(dir) {
@@ -3038,6 +3040,35 @@
                 'cta-desc': 'Llámanos o envía un WhatsApp para recibir atención inmediata. Servicio a domicilio disponible las 24 horas, los 365 días del año.',
                 'btn-call-cta': 'LLAMAR AHORA',
                 'btn-wa-cta': 'ENVIAR WHATSAPP',
+                'ctrl-label': 'Servicio Estrella',
+                'ctrl-title': 'CONTROLES &amp; ACCESOS<br><span class="controls-highlight">CLONAMOS TU CONTROL</span><br>AL INSTANTE',
+                'ctrl-desc': '¿Perdiste o dañaste tu control de acceso? Sin cita previa, sin esperar — duplicamos y programamos controles para portones eléctricos, garage, privadas y accesos residenciales en minutos.',
+                'ctrl-li1-strong': 'Clonación de controles',
+                'ctrl-li1-span': 'Copiamos tu control existente sin programación especial',
+                'ctrl-li2-strong': 'Perdiste tu control de acceso',
+                'ctrl-li2-span': 'Lo reemplazamos y programamos con tu portón original',
+                'ctrl-li3-strong': 'Controles para garage y privadas',
+                'ctrl-li3-span': 'Compatible con Linear, Liftmaster, Chamberlain, Sommer y más',
+                'ctrl-li4-strong': 'Servicio a domicilio inmediato',
+                'ctrl-li4-span': 'Vamos hasta tu casa o privada — Tijuana y Rosarito',
+                'ctrl-cta-wa': 'Cotizar por WhatsApp',
+                'ctrl-stat1-label': 'Controles clonados',
+                'ctrl-stat2-label': 'Tiempo promedio',
+                'ctrl-stat3-label': 'Garantizado',
+                'ctrl-brands-more': '+ más',
+                'footer-brand-desc': 'Especialistas en cerrajería automotriz y residencial con más de 30 años de experiencia. Servicio profesional a domicilio en toda Tijuana.',
+                'footer-col1-title': 'Servicios',
+                'footer-s1': 'Cerrajería Automotriz',
+                'footer-s2': 'Llaves con Chip',
+                'footer-s3': 'Controles para Portones',
+                'footer-s4': 'Cerrajería Residencial',
+                'footer-s5': 'Llaves de Proximidad',
+                'footer-s6': 'Servicio de Urgencia',
+                'footer-col2-title': 'Navegación',
+                'footer-col3-title': 'Contacto',
+                'footer-hours': 'Lunes a Domingo — 24 Horas',
+                'footer-copy': '© 2026 Cerrajería Móvil Tijuana. Todos los derechos reservados.',
+                'footer-credit': 'Diseñado por AI Decoded Agency',
             },
             en: {
                 'nav-home': 'Home',
@@ -3113,6 +3144,35 @@
                 'cta-desc': 'Call us or send a WhatsApp for immediate assistance. Home service available 24 hours a day, 365 days a year.',
                 'btn-call-cta': 'CALL NOW',
                 'btn-wa-cta': 'SEND WHATSAPP',
+                'ctrl-label': 'Star Service',
+                'ctrl-title': 'GATE REMOTES &amp; ACCESS<br><span class="controls-highlight">WE CLONE YOUR REMOTE</span><br>INSTANTLY',
+                'ctrl-desc': 'Lost or damaged your access remote? No appointment needed — we duplicate and program remotes for electric gates, garages, private communities and residential access in minutes.',
+                'ctrl-li1-strong': 'Remote cloning',
+                'ctrl-li1-span': 'We copy your existing remote with no special programming',
+                'ctrl-li2-strong': 'Lost your access remote?',
+                'ctrl-li2-span': 'We replace and program it with your original gate',
+                'ctrl-li3-strong': 'Garage &amp; community remotes',
+                'ctrl-li3-span': 'Compatible with Linear, Liftmaster, Chamberlain, Sommer &amp; more',
+                'ctrl-li4-strong': 'Immediate home service',
+                'ctrl-li4-span': 'We come to your location — Tijuana &amp; Rosarito',
+                'ctrl-cta-wa': 'Get Quote on WhatsApp',
+                'ctrl-stat1-label': 'Remotes cloned',
+                'ctrl-stat2-label': 'Average time',
+                'ctrl-stat3-label': 'Guaranteed',
+                'ctrl-brands-more': '+ more',
+                'footer-brand-desc': 'Specialists in automotive and residential locksmith services with over 30 years of experience. Professional mobile service throughout Tijuana.',
+                'footer-col1-title': 'Services',
+                'footer-s1': 'Automotive Locksmith',
+                'footer-s2': 'Chip Key Programming',
+                'footer-s3': 'Gate Remotes & Controls',
+                'footer-s4': 'Residential Locksmith',
+                'footer-s5': 'Proximity Key Fobs',
+                'footer-s6': 'Emergency Services',
+                'footer-col2-title': 'Navigation',
+                'footer-col3-title': 'Contact',
+                'footer-hours': 'Monday to Sunday — 24 Hours',
+                'footer-copy': '© 2026 Cerrajería Móvil Tijuana. All rights reserved.',
+                'footer-credit': 'Designed by AI Decoded Agency',
             }
         };
 
