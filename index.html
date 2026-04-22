@@ -784,11 +784,13 @@
             background: rgba(246, 173, 85, 0.08);
         }
 
-        .brand-chip .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--accent-amber);
+        .brand-chip .brand-logo {
+            width: 26px;
+            height: 26px;
+            display: block;
+            flex-shrink: 0;
+            opacity: 0.85;
+            object-fit: contain;
         }
 
         /* ============================================
@@ -1009,15 +1011,26 @@
         }
 
         .payment-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            padding: 10px 20px;
+            padding: 10px 18px;
             border-radius: 8px;
             font-family: var(--font-condensed);
             font-weight: 600;
             font-size: 0.85rem;
             letter-spacing: 0.5px;
             color: var(--text-secondary);
+        }
+
+        .payment-icon {
+            width: 20px;
+            height: 20px;
+            display: block;
+            flex-shrink: 0;
+            opacity: 0.85;
         }
 
         /* ============================================
@@ -2463,18 +2476,18 @@
                 <h2 class="section-title" data-i18n="brands-title">SOFTWARE ORIGINAL DE AGENCIA</h2>
             </div>
             <div class="brands-scroll fade-in">
-                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Nissan" target="_blank" class="brand-chip"><span class="dot"></span> Nissan</a>
-                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Ford" target="_blank" class="brand-chip"><span class="dot"></span> Ford</a>
-                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Chevrolet" target="_blank" class="brand-chip"><span class="dot"></span> Chevrolet</a>
-                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Volkswagen" target="_blank" class="brand-chip"><span class="dot"></span> Volkswagen</a>
-                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Toyota" target="_blank" class="brand-chip"><span class="dot"></span> Toyota</a>
-                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Honda" target="_blank" class="brand-chip"><span class="dot"></span> Honda</a>
-                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Mazda" target="_blank" class="brand-chip"><span class="dot"></span> Mazda</a>
-                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Hyundai" target="_blank" class="brand-chip"><span class="dot"></span> Hyundai</a>
-                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20KIA" target="_blank" class="brand-chip"><span class="dot"></span> KIA</a>
-                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Jeep" target="_blank" class="brand-chip"><span class="dot"></span> Jeep</a>
-                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20BMW" target="_blank" class="brand-chip"><span class="dot"></span> BMW</a>
-                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Mercedes-Benz" target="_blank" class="brand-chip"><span class="dot"></span> Mercedes-Benz</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Nissan" target="_blank" class="brand-chip"><img src="https://cdn.simpleicons.org/nissan/ffffff" alt="Nissan" class="brand-logo" onerror="this.style.display='none'"> Nissan</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Ford" target="_blank" class="brand-chip"><img src="https://cdn.simpleicons.org/ford/ffffff" alt="Ford" class="brand-logo" onerror="this.style.display='none'"> Ford</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Chevrolet" target="_blank" class="brand-chip"><img src="https://cdn.simpleicons.org/chevrolet/ffffff" alt="Chevrolet" class="brand-logo" onerror="this.style.display='none'"> Chevrolet</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Volkswagen" target="_blank" class="brand-chip"><img src="https://cdn.simpleicons.org/volkswagen/ffffff" alt="Volkswagen" class="brand-logo" onerror="this.style.display='none'"> Volkswagen</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Toyota" target="_blank" class="brand-chip"><img src="https://cdn.simpleicons.org/toyota/ffffff" alt="Toyota" class="brand-logo" onerror="this.style.display='none'"> Toyota</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Honda" target="_blank" class="brand-chip"><img src="https://cdn.simpleicons.org/honda/ffffff" alt="Honda" class="brand-logo" onerror="this.style.display='none'"> Honda</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Mazda" target="_blank" class="brand-chip"><img src="https://cdn.simpleicons.org/mazda/ffffff" alt="Mazda" class="brand-logo" onerror="this.style.display='none'"> Mazda</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Hyundai" target="_blank" class="brand-chip"><img src="https://cdn.simpleicons.org/hyundai/ffffff" alt="Hyundai" class="brand-logo" onerror="this.style.display='none'"> Hyundai</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20KIA" target="_blank" class="brand-chip"><img src="https://cdn.simpleicons.org/kia/ffffff" alt="KIA" class="brand-logo" onerror="this.style.display='none'"> KIA</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Jeep" target="_blank" class="brand-chip"><img src="https://cdn.simpleicons.org/jeep/ffffff" alt="Jeep" class="brand-logo" onerror="this.style.display='none'"> Jeep</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20BMW" target="_blank" class="brand-chip"><img src="https://cdn.simpleicons.org/bmw/ffffff" alt="BMW" class="brand-logo" onerror="this.style.display='none'"> BMW</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Mercedes-Benz" target="_blank" class="brand-chip"><img src="https://cdn.simpleicons.org/mercedes/ffffff" alt="Mercedes-Benz" class="brand-logo" onerror="this.style.display='none'"> Mercedes-Benz</a>
             </div>
         </div>
     </section>
@@ -2634,21 +2647,21 @@
                 <p class="section-label" data-i18n="payments-label">Formas de Pago</p>
                 <h2 class="section-title" style="font-size:1.8rem" data-i18n="payments-title">ACEPTAMOS MÚLTIPLES MÉTODOS DE PAGO</h2>
                 <div class="payments-grid">
-                    <span class="payment-badge">Efectivo</span>
-                    <span class="payment-badge">Visa</span>
-                    <span class="payment-badge">Mastercard</span>
-                    <span class="payment-badge">AMEX</span>
-                    <span class="payment-badge">Transferencia</span>
-                    <span class="payment-badge">Depósito</span>
-                    <span class="payment-badge">PayPal</span>
-                    <span class="payment-badge">OXXO</span>
-                    <span class="payment-badge">SPEI</span>
-                    <span class="payment-badge">Mercado Pago</span>
-                    <span class="payment-badge">Apple Pay</span>
-                    <span class="payment-badge">Samsung Pay</span>
-                    <span class="payment-badge">CoDi</span>
-                    <span class="payment-badge">Baz</span>
-                    <span class="payment-badge">7-Eleven</span>
+                    <span class="payment-badge"><i data-lucide="banknote" style="width:20px;height:20px;flex-shrink:0"></i> Efectivo</span>
+                    <span class="payment-badge"><img src="https://cdn.simpleicons.org/visa/ffffff" alt="Visa" class="payment-icon" onerror="this.style.display='none'"> Visa</span>
+                    <span class="payment-badge"><img src="https://cdn.simpleicons.org/mastercard/ffffff" alt="Mastercard" class="payment-icon" onerror="this.style.display='none'"> Mastercard</span>
+                    <span class="payment-badge"><img src="https://cdn.simpleicons.org/americanexpress/ffffff" alt="AMEX" class="payment-icon" onerror="this.style.display='none'"> AMEX</span>
+                    <span class="payment-badge"><i data-lucide="arrow-left-right" style="width:20px;height:20px;flex-shrink:0"></i> Transferencia</span>
+                    <span class="payment-badge"><i data-lucide="landmark" style="width:20px;height:20px;flex-shrink:0"></i> Depósito</span>
+                    <span class="payment-badge"><img src="https://cdn.simpleicons.org/paypal/ffffff" alt="PayPal" class="payment-icon" onerror="this.style.display='none'"> PayPal</span>
+                    <span class="payment-badge"><img src="https://cdn.simpleicons.org/oxxo/ffffff" alt="OXXO" class="payment-icon" onerror="this.style.display='none'"> OXXO</span>
+                    <span class="payment-badge"><i data-lucide="building-2" style="width:20px;height:20px;flex-shrink:0"></i> SPEI</span>
+                    <span class="payment-badge"><img src="https://cdn.simpleicons.org/mercadopago/ffffff" alt="Mercado Pago" class="payment-icon" onerror="this.style.display='none'"> Mercado Pago</span>
+                    <span class="payment-badge"><img src="https://cdn.simpleicons.org/applepay/ffffff" alt="Apple Pay" class="payment-icon" onerror="this.style.display='none'"> Apple Pay</span>
+                    <span class="payment-badge"><img src="https://cdn.simpleicons.org/samsungpay/ffffff" alt="Samsung Pay" class="payment-icon" onerror="this.style.display='none'"> Samsung Pay</span>
+                    <span class="payment-badge"><i data-lucide="qr-code" style="width:20px;height:20px;flex-shrink:0"></i> CoDi</span>
+                    <span class="payment-badge"><i data-lucide="smartphone" style="width:20px;height:20px;flex-shrink:0"></i> Baz</span>
+                    <span class="payment-badge"><img src="https://cdn.simpleicons.org/7eleven/ffffff" alt="7-Eleven" class="payment-icon" onerror="this.style.display='none'"> 7-Eleven</span>
                 </div>
             </div>
         </div>
