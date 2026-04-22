@@ -1206,6 +1206,10 @@
             .hero-right {
                 max-width: 500px;
                 margin: 0 auto;
+                order: -1;
+            }
+            .hero-floating-card {
+                display: none;
             }
             .hero-subtitle {
                 margin: 0 auto 32px;
@@ -1237,6 +1241,16 @@
             }
             .nav-cta .btn-whatsapp span {
                 display: none;
+            }
+            .btn-call-desktop {
+                display: none !important;
+            }
+            .nav-call-mobile {
+                display: list-item;
+            }
+            .logo-text {
+                font-size: 1rem;
+                letter-spacing: 1px;
             }
             .menu-toggle {
                 display: block;
@@ -1286,6 +1300,7 @@
             }
 
             /* Mobile nav */
+            .nav-call-mobile { display: none; }
             .nav-links.active {
                 display: flex;
                 flex-direction: column;
@@ -1297,10 +1312,25 @@
                 padding: 24px;
                 gap: 20px;
                 border-bottom: 1px solid var(--border);
+                z-index: 999;
+            }
+            .nav-links.active .nav-call-mobile {
+                display: list-item;
+                padding-top: 8px;
+                border-top: 1px solid var(--border);
             }
         }
 
         @media (max-width: 480px) {
+            .topbar-msg, .topbar-sep {
+                display: none;
+            }
+            .logo-text {
+                display: none;
+            }
+            .navbar-inner {
+                padding: 0 4px;
+            }
             .hero-ctas {
                 flex-direction: column;
                 align-items: center;
@@ -2053,7 +2083,7 @@
          ============================================ -->
     <div class="topbar">
         <span class="pulse-dot"></span>
-        <span data-i18n="topbar-text">DISPONIBLE AHORA — SERVICIO DE URGENCIA 24/7</span> &nbsp;|&nbsp;
+        <span class="topbar-msg" data-i18n="topbar-text">DISPONIBLE AHORA — SERVICIO DE URGENCIA 24/7</span><span class="topbar-sep"> &nbsp;|&nbsp; </span>
         <a href="tel:6641117147" data-i18n="topbar-call">LLAMA: 664-111-7147</a>
     </div>
 
@@ -2071,9 +2101,13 @@
                 <li><a href="#servicios" data-i18n="nav-services">Servicios</a></li>
                 <li><a href="#cobertura" data-i18n="nav-coverage">Cobertura</a></li>
                 <li><a href="#contacto" data-i18n="nav-contact">Contacto</a></li>
+                <li class="nav-call-mobile"><a href="tel:6641117147" class="btn-call" style="display:inline-flex;text-decoration:none">
+                    <i data-lucide="phone" style="width:18px;height:18px"></i>
+                    664-111-7147
+                </a></li>
             </ul>
             <div class="nav-cta">
-                <a href="tel:6641117147" class="btn-call">
+                <a href="tel:6641117147" class="btn-call btn-call-desktop">
                     <i data-lucide="phone" style="width:18px;height:18px"></i>
                     664-111-7147
                 </a>
