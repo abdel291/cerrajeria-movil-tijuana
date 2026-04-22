@@ -189,6 +189,9 @@
         .logo-area img {
             height: 48px;
             width: auto;
+            background: #fff;
+            border-radius: 8px;
+            padding: 4px 6px;
         }
 
         .logo-text {
@@ -487,6 +490,7 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
             aspect-ratio: 4/3;
             background: var(--surface);
+            position: relative;
         }
 
         .hero-image-main img {
@@ -602,6 +606,10 @@
             opacity: 1;
         }
 
+        .service-card:hover .service-icon {
+            transform: scale(1.2);
+        }
+
         .service-icon {
             width: 56px;
             height: 56px;
@@ -611,6 +619,7 @@
             justify-content: center;
             margin-bottom: 20px;
             font-size: 1.4rem;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .service-icon.automotive {
@@ -942,6 +951,8 @@
             align-items: center;
             gap: 8px;
             transition: all 0.25s;
+            text-decoration: none;
+            cursor: pointer;
         }
 
         .zone-chip:hover {
@@ -1009,13 +1020,17 @@
             padding: 100px 0;
             position: relative;
             overflow: hidden;
+            background-image: url('images/van.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         .cta-section::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at center, rgba(229, 62, 62, 0.08) 0%, transparent 70%);
+            background: rgba(10, 10, 15, 0.78);
         }
 
         .cta-card {
@@ -1300,6 +1315,443 @@
                 justify-content: center;
             }
         }
+
+        /* ============================================
+           HERO CAROUSEL
+           ============================================ */
+        .hero-carousel {
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-carousel-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .hero-carousel-slide.active {
+            opacity: 1;
+        }
+
+        .hero-carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-carousel-dots {
+            position: absolute;
+            bottom: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 5;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            padding: 0;
+        }
+
+        .carousel-dot.active {
+            background: var(--accent-amber);
+            width: 24px;
+        }
+
+        /* ============================================
+           LANGUAGE TOGGLE
+           ============================================ */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 14px;
+            cursor: pointer;
+            font-family: var(--font-condensed);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent-amber);
+            color: var(--text-primary);
+        }
+
+        .lang-toggle.en-active {
+            border-color: var(--accent-amber);
+            color: var(--accent-amber);
+        }
+
+        .english-spoken-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-condensed);
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: color 0.25s;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
+        }
+
+        .english-spoken-badge:hover {
+            color: var(--text-primary);
+            border-color: var(--accent-amber);
+        }
+
+        /* ============================================
+           SERVICE CARD CTA
+           ============================================ */
+        .service-card-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--whatsapp);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: var(--font-condensed);
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 16px;
+            transition: all 0.25s;
+        }
+
+        .service-card-cta:hover {
+            background: rgba(37, 211, 102, 0.1);
+            border-color: var(--whatsapp);
+            transform: translateY(-1px);
+        }
+
+        /* ============================================
+           GALLERY TABS & CAROUSELS
+           ============================================ */
+        .gallery-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 36px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .gallery-tab-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 10px 28px;
+            border-radius: 8px;
+            font-family: var(--font-condensed);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.25s;
+            text-transform: uppercase;
+        }
+
+        .gallery-tab-btn.active {
+            background: rgba(246, 173, 85, 0.1);
+            border-color: var(--accent-amber);
+            color: var(--accent-amber);
+        }
+
+        .gallery-panel {
+            display: none;
+        }
+
+        .gallery-panel.active {
+            display: block;
+        }
+
+        .cards-carousel-wrapper {
+            overflow: hidden;
+        }
+
+        .cards-carousel-track {
+            display: flex;
+            gap: 16px;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .card-slide {
+            flex-shrink: 0;
+            width: calc(25% - 12px);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            position: relative;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .card-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .card-slide:hover {
+            border-color: rgba(246, 173, 85, 0.5);
+            box-shadow: 0 8px 40px rgba(246, 173, 85, 0.2), 0 4px 20px rgba(0,0,0,0.4);
+            transform: translateY(-3px);
+        }
+
+        .card-slide:hover img {
+            transform: scale(1.06);
+        }
+
+        .cards-carousel-nav {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 24px;
+            align-items: center;
+        }
+
+        .cards-nav-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-size: 1.1rem;
+        }
+
+        .cards-nav-btn:hover {
+            border-color: var(--accent-amber);
+            background: rgba(246, 173, 85, 0.1);
+            color: var(--accent-amber);
+        }
+
+        .cards-nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .cards-counter {
+            font-family: var(--font-condensed);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            min-width: 60px;
+            text-align: center;
+        }
+
+        @media (max-width: 1024px) {
+            .card-slide { width: calc(33.333% - 11px); }
+        }
+        @media (max-width: 768px) {
+            .card-slide { width: calc(50% - 8px); }
+        }
+        @media (max-width: 480px) {
+            .card-slide { width: 80%; }
+        }
+
+        /* ============================================
+           ADS SQUARE CAROUSEL
+           ============================================ */
+        .ads-slide {
+            aspect-ratio: 1 / 1;
+        }
+
+        .ads-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ============================================
+           CARD ZOOM OVERLAY
+           ============================================ */
+        .card-slide::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(246, 173, 85, 0);
+            transition: background 0.35s;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .card-slide:hover::before {
+            background: rgba(246, 173, 85, 0.07);
+        }
+
+        .card-zoom-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.3);
+            width: 52px;
+            height: 52px;
+            background: var(--accent-amber);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: 300;
+            color: #0a0a0f;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        .card-slide:hover .card-zoom-overlay {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* ============================================
+           BRAND CHIP LINK
+           ============================================ */
+        a.brand-chip {
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        a.brand-chip:hover {
+            border-color: var(--whatsapp);
+            background: rgba(37, 211, 102, 0.08);
+            color: var(--text-primary);
+        }
+
+        a.brand-chip:hover .dot {
+            background: var(--whatsapp);
+        }
+
+        /* ============================================
+           LIGHTBOX
+           ============================================ */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.93);
+            z-index: 99999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox.open {
+            display: flex;
+        }
+
+        .lightbox-img {
+            max-width: 80vw;
+            max-height: 85vh;
+            border-radius: 12px;
+            object-fit: contain;
+            box-shadow: 0 20px 80px rgba(0,0,0,0.8);
+            border: 1px solid var(--border);
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 20px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            line-height: 1;
+            transition: all 0.25s;
+            z-index: 100000;
+        }
+
+        .lightbox-close:hover {
+            background: var(--accent-red);
+            border-color: var(--accent-red);
+        }
+
+        .lightbox-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            transition: all 0.25s;
+            z-index: 100000;
+        }
+
+        .lightbox-nav.prev { left: 16px; }
+        .lightbox-nav.next { right: 16px; }
+
+        .lightbox-nav:hover {
+            border-color: var(--accent-amber);
+            color: var(--accent-amber);
+            background: rgba(246, 173, 85, 0.1);
+        }
+
+        .lightbox-counter {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-condensed);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            background: var(--bg-card);
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        /* ============================================
+           HERO PARALLAX
+           ============================================ */
+        .hero-image-main {
+            will-change: transform;
+        }
     </style>
 </head>
 <body>
@@ -1309,8 +1761,8 @@
          ============================================ -->
     <div class="topbar">
         <span class="pulse-dot"></span>
-        DISPONIBLE AHORA — SERVICIO DE URGENCIA 24/7 &nbsp;|&nbsp;
-        <a href="tel:6641117147">LLAMA: 664-111-7147</a>
+        <span data-i18n="topbar-text">DISPONIBLE AHORA — SERVICIO DE URGENCIA 24/7</span> &nbsp;|&nbsp;
+        <a href="tel:6641117147" data-i18n="topbar-call">LLAMA: 664-111-7147</a>
     </div>
 
     <!-- ============================================
@@ -1324,12 +1776,9 @@
                 <div class="logo-text">CERRAJERÍA <span>MÓVIL</span><br>TIJUANA</div>
             </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#galeria">Galería</a></li>
-                <li><a href="#cobertura">Cobertura</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#servicios" data-i18n="nav-services">Servicios</a></li>
+                <li><a href="#cobertura" data-i18n="nav-coverage">Cobertura</a></li>
+                <li><a href="#contacto" data-i18n="nav-contact">Contacto</a></li>
             </ul>
             <div class="nav-cta">
                 <a href="tel:6641117147" class="btn-call">
@@ -1341,6 +1790,7 @@
                     <span>WhatsApp</span>
                 </a>
             </div>
+            <button id="langToggle" class="lang-toggle" onclick="toggleLang()" title="Switch language" aria-label="Cambiar idioma">🇺🇸 EN</button>
             <button class="menu-toggle" id="menuToggle" aria-label="Menú">
                 <i data-lucide="menu" style="width:28px;height:28px"></i>
             </button>
@@ -1357,53 +1807,68 @@
                 <div class="hero-left">
                     <div class="hero-badge">
                         <span class="live-dot"></span>
-                        SERVICIO ACTIVO 24/7
+                        <span data-i18n="hero-badge-text">SERVICIO ACTIVO 24/7</span>
                     </div>
-                    <h1>
+                    <h1 data-i18n="hero-h1">
                         CERRAJERÍA<br>
                         <span class="highlight">AUTOMOTRIZ</span><br>
                         EN TIJUANA
                     </h1>
-                    <p class="hero-subtitle">
+                    <div class="english-spoken-badge" onclick="toggleLang()" data-i18n="english-spoken">🇺🇸 ENGLISH SPOKEN</div>
+                    <p class="hero-subtitle" data-i18n="hero-subtitle">
                         Más de <strong>30 años de experiencia</strong> en apertura de autos, programación de llaves con chip, controles para portones y atención de emergencia a domicilio con <strong>software original de agencia</strong>.
                     </p>
                     <div class="hero-ctas">
                         <a href="tel:6641117147" class="btn-hero-call">
                             <i data-lucide="phone" style="width:20px;height:20px"></i>
-                            LLAMAR AHORA
+                            <span data-i18n="btn-call-hero">LLAMAR AHORA</span>
                         </a>
                         <a href="https://wa.me/5216641117147?text=Hola%2C%20necesito%20un%20cerrajero%20urgente" target="_blank" class="btn-hero-wa">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.317 0-4.478-.682-6.308-1.853l-.442-.282-3.106 1.041 1.041-3.106-.282-.442A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                            WHATSAPP
+                            <span data-i18n="btn-wa-hero">WHATSAPP</span>
                         </a>
                     </div>
                     <div class="hero-trust">
                         <div class="trust-item">
                             <span class="trust-number">30+</span>
-                            <span class="trust-label">Años de experiencia</span>
+                            <span class="trust-label" data-i18n="trust-years">Años de experiencia</span>
                         </div>
                         <div class="trust-item">
                             <span class="trust-number">24/7</span>
-                            <span class="trust-label">Siempre disponibles</span>
+                            <span class="trust-label" data-i18n="trust-available">Siempre disponibles</span>
                         </div>
                         <div class="trust-item">
                             <span class="trust-number">365</span>
-                            <span class="trust-label">Días del año</span>
+                            <span class="trust-label" data-i18n="trust-days">Días del año</span>
                         </div>
                     </div>
                 </div>
                 <div class="hero-right">
                     <div class="hero-image-main">
-                        <!-- IMAGEN PRINCIPAL: Reemplazar con imagen real -->
-                        <img src="https://lirp.cdn-website.com/eeccc7a9/dms3rep/multi/opt/fb8921e1-4248-41d2-b244-6c014956f05b+%281%29-1920w.jpg" alt="Cerrajería Móvil Tijuana - Unidad móvil equipada" onerror="this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:100%;background:#1a1a26;color:#6a6a7a;font-family:Barlow Condensed;font-size:1.2rem;letter-spacing:2px&quot;>IMAGEN PRINCIPAL</div>'">
+                        <div class="hero-carousel" id="heroCarousel">
+                            <div class="hero-carousel-slide active">
+                                <img src="images/van.jpg" alt="Unidad Móvil Cerrajería Tijuana - Van equipada">
+                            </div>
+                            <div class="hero-carousel-slide">
+                                <img src="images/hero/banner1.png" alt="Cerrajería Móvil Tijuana 24 horas">
+                            </div>
+                            <div class="hero-carousel-slide">
+                                <img src="images/hero/banner2.jpg" alt="Servicio cerrajería Tijuana y Rosarito">
+                            </div>
+                            <div class="hero-carousel-dots">
+                                <button class="carousel-dot active" onclick="heroGoTo(0)" aria-label="Slide 1"></button>
+                                <button class="carousel-dot" onclick="heroGoTo(1)" aria-label="Slide 2"></button>
+                                <button class="carousel-dot" onclick="heroGoTo(2)" aria-label="Slide 3"></button>
+                            </div>
+                        </div>
                     </div>
                     <div class="hero-floating-card">
                         <div class="icon-circle">
                             <i data-lucide="shield-check" style="width:22px;height:22px"></i>
                         </div>
                         <div class="card-text">
-                            <strong>Software Original</strong>
-                            <span>Nissan · Ford · Chevrolet · VW</span>
+                            <strong data-i18n="floating-title">Software Original</strong>
+                            <span data-i18n="floating-subtitle">Nissan · Ford · Chevrolet · VW</span>
                         </div>
                     </div>
                 </div>
@@ -1417,82 +1882,104 @@
     <section class="services" id="servicios">
         <div class="container">
             <div class="services-header fade-in">
-                <p class="section-label">Nuestros Servicios</p>
-                <h2 class="section-title">SOLUCIONES PROFESIONALES<br>PARA TU SEGURIDAD</h2>
-                <p class="section-desc">Atención especializada con equipo de última tecnología y software original de agencia para todas las marcas.</p>
+                <p class="section-label" data-i18n="services-label">Nuestros Servicios</p>
+                <h2 class="section-title" data-i18n="services-title">SOLUCIONES PROFESIONALES<br>PARA TU SEGURIDAD</h2>
+                <p class="section-desc" data-i18n="services-desc">Atención especializada con equipo de última tecnología y software original de agencia para todas las marcas.</p>
             </div>
 
             <div class="services-grid">
-                <!-- Service 1: Automotriz -->
                 <div class="service-card fade-in">
                     <div class="service-icon automotive">
                         <i data-lucide="car" style="width:28px;height:28px"></i>
                     </div>
-                    <h3>Cerrajería Automotriz</h3>
-                    <p>Apertura de autos de todas las marcas y modelos. Servicio rápido con herramienta especializada sin dañar tu vehículo.</p>
+                    <h3 data-i18n="s1-title">Cerrajería Automotriz</h3>
+                    <p data-i18n="s1-desc">Apertura de autos de todas las marcas y modelos. Servicio rápido con herramienta especializada sin dañar tu vehículo.</p>
+                    <a href="https://wa.me/5216641117147?text=Hola%2C%20necesito%20apertura%20de%20auto.%20%C2%BFEst%C3%A1n%20disponibles%3F" target="_blank" class="service-card-cta">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.317 0-4.478-.682-6.308-1.853l-.442-.282-3.106 1.041 1.041-3.106-.282-.442A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                        <span data-i18n="s1-cta">Solicitar Servicio</span>
+                    </a>
                 </div>
 
-                <!-- Service 2: Llaves con chip -->
                 <div class="service-card fade-in">
                     <div class="service-icon chip">
                         <i data-lucide="cpu" style="width:28px;height:28px"></i>
                     </div>
-                    <h3>Programación de Llaves con Chip</h3>
-                    <p>Duplicado y programación por computadora de llaves inteligentes con software original de agencia. Nissan, Ford, Chevrolet y VW.</p>
+                    <h3 data-i18n="s2-title">Programación de Llaves con Chip</h3>
+                    <p data-i18n="s2-desc">Duplicado y programación por computadora de llaves inteligentes con software original de agencia. Nissan, Ford, Chevrolet y VW.</p>
+                    <a href="https://wa.me/5216641117147?text=Hola%2C%20necesito%20programaci%C3%B3n%20de%20llaves%20con%20chip.%20%C2%BFMe%20pueden%20ayudar%3F" target="_blank" class="service-card-cta">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.317 0-4.478-.682-6.308-1.853l-.442-.282-3.106 1.041 1.041-3.106-.282-.442A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                        <span data-i18n="s2-cta">Solicitar Servicio</span>
+                    </a>
                 </div>
 
-                <!-- Service 3: Controles -->
                 <div class="service-card fade-in">
                     <div class="service-icon controls">
                         <i data-lucide="radio" style="width:28px;height:28px"></i>
                     </div>
-                    <h3>Controles para Portones</h3>
-                    <p>Venta y clonación de controles compatibles para portones eléctricos, garage y accesos de privadas con alta durabilidad.</p>
+                    <h3 data-i18n="s3-title">Controles para Portones</h3>
+                    <p data-i18n="s3-desc">Venta y clonación de controles compatibles para portones eléctricos, garage y accesos de privadas con alta durabilidad.</p>
+                    <a href="https://wa.me/5216641117147?text=Hola%2C%20necesito%20un%20control%20para%20port%C3%B3n.%20%C2%BFEst%C3%A1n%20disponibles%3F" target="_blank" class="service-card-cta">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.317 0-4.478-.682-6.308-1.853l-.442-.282-3.106 1.041 1.041-3.106-.282-.442A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                        <span data-i18n="s3-cta">Solicitar Servicio</span>
+                    </a>
                 </div>
 
-                <!-- Service 4: Residencial -->
                 <div class="service-card fade-in">
                     <div class="service-icon residential">
                         <i data-lucide="home" style="width:28px;height:28px"></i>
                     </div>
-                    <h3>Cerrajería Residencial</h3>
-                    <p>Apertura, mantenimiento e instalación de cerraduras para hogares, privadas y accesos controlados.</p>
+                    <h3 data-i18n="s4-title">Cerrajería Residencial</h3>
+                    <p data-i18n="s4-desc">Apertura, mantenimiento e instalación de cerraduras para hogares, privadas y accesos controlados.</p>
+                    <a href="https://wa.me/5216641117147?text=Hola%2C%20necesito%20servicio%20de%20cerrajer%C3%ADa%20residencial.%20%C2%BFEst%C3%A1n%20disponibles%3F" target="_blank" class="service-card-cta">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.317 0-4.478-.682-6.308-1.853l-.442-.282-3.106 1.041 1.041-3.106-.282-.442A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                        <span data-i18n="s4-cta">Solicitar Servicio</span>
+                    </a>
                 </div>
 
-                <!-- Service 5: Llaves de proximidad -->
                 <div class="service-card fade-in">
                     <div class="service-icon chip">
                         <i data-lucide="key-round" style="width:28px;height:28px"></i>
                     </div>
-                    <h3>Llaves de Proximidad</h3>
-                    <p>Programación y duplicado de llaves de proximidad para vehículos de última generación con tecnología avanzada.</p>
+                    <h3 data-i18n="s5-title">Llaves de Proximidad</h3>
+                    <p data-i18n="s5-desc">Programación y duplicado de llaves de proximidad para vehículos de última generación con tecnología avanzada.</p>
+                    <a href="https://wa.me/5216641117147?text=Hola%2C%20necesito%20programaci%C3%B3n%20de%20llave%20de%20proximidad.%20%C2%BFMe%20pueden%20ayudar%3F" target="_blank" class="service-card-cta">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.317 0-4.478-.682-6.308-1.853l-.442-.282-3.106 1.041 1.041-3.106-.282-.442A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                        <span data-i18n="s5-cta">Solicitar Servicio</span>
+                    </a>
                 </div>
 
-                <!-- Service 6: Emergencias -->
                 <div class="service-card fade-in">
                     <div class="service-icon emergency">
                         <i data-lucide="siren" style="width:28px;height:28px"></i>
                     </div>
-                    <h3>Servicios de Urgencia</h3>
-                    <p>Respuesta inmediata ante emergencias. Llegamos a tu ubicación en Tijuana con equipo completo y soluciones listas.</p>
+                    <h3 data-i18n="s6-title">Servicios de Urgencia</h3>
+                    <p data-i18n="s6-desc">Respuesta inmediata ante emergencias. Llegamos a tu ubicación en Tijuana con equipo completo y soluciones listas.</p>
+                    <a href="https://wa.me/5216641117147?text=%C2%A1URGENTE%21%20Necesito%20un%20cerrajero%20ahora.%20%C2%BFEst%C3%A1n%20disponibles%3F" target="_blank" class="service-card-cta">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.317 0-4.478-.682-6.308-1.853l-.442-.282-3.106 1.041 1.041-3.106-.282-.442A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                        <span data-i18n="s6-cta">🚨 Urgencia — Escribir ahora</span>
+                    </a>
                 </div>
 
                 <!-- Featured service -->
                 <div class="service-card service-featured fade-in">
                     <div class="service-featured-img">
-                        <img src="https://lirp.cdn-website.com/eeccc7a9/dms3rep/multi/opt/ef020048-d836-4b26-a831-10fa430ca1c2-1920w.jpg" alt="Unidad móvil equipada Cerrajería Móvil Tijuana" onerror="this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:100%;background:#1e1e2a;color:#6a6a7a;font-family:Barlow Condensed;font-size:1.1rem;letter-spacing:2px&quot;>IMAGEN UNIDAD MÓVIL</div>'">
+                        <img src="images/van.jpg" alt="Unidad móvil equipada Cerrajería Móvil Tijuana">
                     </div>
                     <div class="service-featured-content">
-                        <p class="section-label">Servicio Destacado</p>
-                        <h3>UNIDAD MÓVIL EQUIPADA</h3>
-                        <p>Contamos con una unidad móvil perfectamente equipada con computadora para diagnóstico y programación de computadoras y tableros de todo tipo de autos.</p>
+                        <p class="section-label" data-i18n="featured-label">Servicio Destacado</p>
+                        <h3 data-i18n="featured-title">UNIDAD MÓVIL EQUIPADA</h3>
+                        <p data-i18n="featured-desc">Contamos con una unidad móvil perfectamente equipada con computadora para diagnóstico y programación de computadoras y tableros de todo tipo de autos.</p>
                         <ul class="feature-list">
-                            <li><i data-lucide="check-circle" style="width:18px;height:18px"></i> Software original de agencia</li>
-                            <li><i data-lucide="check-circle" style="width:18px;height:18px"></i> Programación por computadora</li>
-                            <li><i data-lucide="check-circle" style="width:18px;height:18px"></i> Servicio a domicilio en toda Tijuana</li>
-                            <li><i data-lucide="check-circle" style="width:18px;height:18px"></i> Clonación de controles sin ir a tu casa</li>
-                            <li><i data-lucide="check-circle" style="width:18px;height:18px"></i> Tarjetas electrónicas certificadas</li>
+                            <li><i data-lucide="check-circle" style="width:18px;height:18px"></i> <span data-i18n="featured-f1">Software original de agencia</span></li>
+                            <li><i data-lucide="check-circle" style="width:18px;height:18px"></i> <span data-i18n="featured-f2">Programación por computadora</span></li>
+                            <li><i data-lucide="check-circle" style="width:18px;height:18px"></i> <span data-i18n="featured-f3">Servicio a domicilio en toda Tijuana y Rosarito</span></li>
+                            <li><i data-lucide="check-circle" style="width:18px;height:18px"></i> <span data-i18n="featured-f4">Clonación de controles sin ir a tu casa</span></li>
+                            <li><i data-lucide="check-circle" style="width:18px;height:18px"></i> <span data-i18n="featured-f5">Tarjetas electrónicas certificadas</span></li>
                         </ul>
+                        <a href="https://wa.me/5216641117147?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20la%20unidad%20m%C3%B3vil%20a%20domicilio.%20%C2%BFPueden%20venir%3F" target="_blank" class="service-card-cta" style="margin-top:24px">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.317 0-4.478-.682-6.308-1.853l-.442-.282-3.106 1.041 1.041-3.106-.282-.442A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                            <span data-i18n="featured-cta">Solicitar Unidad Móvil</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1505,22 +1992,22 @@
     <section class="brands">
         <div class="container">
             <div class="brands-header fade-in">
-                <p class="section-label">Marcas que Trabajamos</p>
-                <h2 class="section-title">SOFTWARE ORIGINAL DE AGENCIA</h2>
+                <p class="section-label" data-i18n="brands-label">Marcas que Trabajamos</p>
+                <h2 class="section-title" data-i18n="brands-title">SOFTWARE ORIGINAL DE AGENCIA</h2>
             </div>
             <div class="brands-scroll fade-in">
-                <div class="brand-chip"><span class="dot"></span> Nissan</div>
-                <div class="brand-chip"><span class="dot"></span> Ford</div>
-                <div class="brand-chip"><span class="dot"></span> Chevrolet</div>
-                <div class="brand-chip"><span class="dot"></span> Volkswagen</div>
-                <div class="brand-chip"><span class="dot"></span> Toyota</div>
-                <div class="brand-chip"><span class="dot"></span> Honda</div>
-                <div class="brand-chip"><span class="dot"></span> Mazda</div>
-                <div class="brand-chip"><span class="dot"></span> Hyundai</div>
-                <div class="brand-chip"><span class="dot"></span> KIA</div>
-                <div class="brand-chip"><span class="dot"></span> Jeep</div>
-                <div class="brand-chip"><span class="dot"></span> BMW</div>
-                <div class="brand-chip"><span class="dot"></span> Mercedes-Benz</div>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Nissan" target="_blank" class="brand-chip"><span class="dot"></span> Nissan</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Ford" target="_blank" class="brand-chip"><span class="dot"></span> Ford</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Chevrolet" target="_blank" class="brand-chip"><span class="dot"></span> Chevrolet</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Volkswagen" target="_blank" class="brand-chip"><span class="dot"></span> Volkswagen</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Toyota" target="_blank" class="brand-chip"><span class="dot"></span> Toyota</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Honda" target="_blank" class="brand-chip"><span class="dot"></span> Honda</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Mazda" target="_blank" class="brand-chip"><span class="dot"></span> Mazda</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Hyundai" target="_blank" class="brand-chip"><span class="dot"></span> Hyundai</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20KIA" target="_blank" class="brand-chip"><span class="dot"></span> KIA</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Jeep" target="_blank" class="brand-chip"><span class="dot"></span> Jeep</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20BMW" target="_blank" class="brand-chip"><span class="dot"></span> BMW</a>
+                <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20veh%C3%ADculo%20Mercedes-Benz" target="_blank" class="brand-chip"><span class="dot"></span> Mercedes-Benz</a>
             </div>
         </div>
     </section>
@@ -1543,28 +2030,28 @@
                     </div>
                 </div>
                 <div class="about-content fade-in">
-                    <p class="section-label">¿Por qué elegirnos?</p>
-                    <h2 class="section-title">CALIDAD Y CONFIANZA</h2>
-                    <p class="about-text">
+                    <p class="section-label" data-i18n="about-label">¿Por qué elegirnos?</p>
+                    <h2 class="section-title" data-i18n="about-title">CALIDAD Y CONFIANZA</h2>
+                    <p class="about-text" data-i18n="about-text">
                         Somos <strong>Cerrajería Móvil Tijuana</strong>, especialistas en soluciones profesionales de cerrajería automotriz y residencial con más de 30 años de experiencia. Contamos con personal capacitado, software original y una unidad móvil completamente equipada para resolver cualquier situación en el momento que lo necesites.
                     </p>
                     <div class="stats-row">
                         <div class="stat-box">
                             <div class="stat-number">30+</div>
-                            <div class="stat-label">AÑOS</div>
+                            <div class="stat-label" data-i18n="stat-years">AÑOS</div>
                         </div>
                         <div class="stat-box">
                             <div class="stat-number">24/7</div>
-                            <div class="stat-label">DISPONIBLE</div>
+                            <div class="stat-label" data-i18n="stat-avail">DISPONIBLE</div>
                         </div>
                         <div class="stat-box">
                             <div class="stat-number">100%</div>
-                            <div class="stat-label">GARANTÍA</div>
+                            <div class="stat-label" data-i18n="stat-warranty">GARANTÍA</div>
                         </div>
                     </div>
                     <a href="tel:6641117147" class="btn-hero-call">
                         <i data-lucide="phone" style="width:18px;height:18px"></i>
-                        SOLICITAR SERVICIO
+                        <span data-i18n="about-btn">SOLICITAR SERVICIO</span>
                     </a>
                 </div>
             </div>
@@ -1577,30 +2064,58 @@
     <section class="gallery" id="galeria">
         <div class="container">
             <div class="gallery-header fade-in">
-                <p class="section-label">Nuestro Trabajo</p>
-                <h2 class="section-title">GALERÍA</h2>
-                <p class="section-desc" style="margin:0 auto">Conoce nuestro equipo, herramientas y resultados de trabajo.</p>
+                <p class="section-label" data-i18n="gallery-label">Nuestro Trabajo</p>
+                <h2 class="section-title" data-i18n="gallery-title">GALERÍA</h2>
+                <p class="section-desc" style="margin:0 auto" data-i18n="gallery-subtitle">Toca cada imagen para ampliarla.</p>
             </div>
-            <div class="gallery-grid fade-in">
-                <!-- NOTA: Reemplazar estas imágenes con las fotos reales del negocio y de los ads -->
-                <div class="gallery-item wide">
-                    <img src="https://lirp.cdn-website.com/eeccc7a9/dms3rep/multi/opt/fb8921e1-4248-41d2-b244-6c014956f05b+%281%29-1920w.jpg" alt="Unidad móvil cerrajería" onerror="this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:100%;background:#1e1e2a;color:#6a6a7a;font-family:Barlow Condensed;letter-spacing:2px&quot;>FOTO 1 - ADS</div>'">
+
+            <!-- Cards carousel (vertical/portrait) -->
+            <div class="fade-in">
+                <div class="cards-carousel-wrapper">
+                    <div class="cards-carousel-track" id="cardsTrack">
+                        <div class="card-slide" onclick="openCardLightbox(this.querySelector('img'))"><img src="images/cards/card01.jpeg" alt="Servicio cerrajería automotriz"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide" onclick="openCardLightbox(this.querySelector('img'))"><img src="images/cards/card02.jpeg" alt="Programación llaves con chip"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide" onclick="openCardLightbox(this.querySelector('img'))"><img src="images/cards/card03.jpeg" alt="Controles para portones"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide" onclick="openCardLightbox(this.querySelector('img'))"><img src="images/cards/card04.jpeg" alt="Cerrajería residencial"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide" onclick="openCardLightbox(this.querySelector('img'))"><img src="images/cards/card05.jpeg" alt="Llaves de proximidad"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide" onclick="openCardLightbox(this.querySelector('img'))"><img src="images/cards/card06.jpeg" alt="Servicio urgencia 24hrs"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide" onclick="openCardLightbox(this.querySelector('img'))"><img src="images/cards/card07.jpeg" alt="Unidad móvil equipada"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide" onclick="openCardLightbox(this.querySelector('img'))"><img src="images/cards/card08.jpeg" alt="Software original agencia"><div class="card-zoom-overlay">+</div></div>
+                    </div>
+                    <div class="cards-carousel-nav">
+                        <button class="cards-nav-btn" id="cardsPrev" onclick="cardsNav(-1)" aria-label="Anterior">&#8592;</button>
+                        <span class="cards-counter" id="cardsCounter">1 / 5</span>
+                        <button class="cards-nav-btn" id="cardsNext" onclick="cardsNav(1)" aria-label="Siguiente">&#8594;</button>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://lirp.cdn-website.com/eeccc7a9/dms3rep/multi/opt/cf27ee32-4f57-45fb-8eb6-42b20b41cc71-1920w.jpg" alt="Programación de llaves" onerror="this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:100%;background:#1e1e2a;color:#6a6a7a;font-family:Barlow Condensed;letter-spacing:2px&quot;>FOTO 2</div>'">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://lirp.cdn-website.com/eeccc7a9/dms3rep/multi/opt/c57dbb18-68d6-48a4-8068-6074c45d4cd5-1920w.jpg" alt="Equipo de cerrajería" onerror="this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:100%;background:#1e1e2a;color:#6a6a7a;font-family:Barlow Condensed;letter-spacing:2px&quot;>FOTO 3</div>'">
-                </div>
-                <!-- Placeholders para imágenes de ads que tú agregarás -->
-                <div class="gallery-item">
-                    <div style="display:flex;align-items:center;justify-content:center;height:100%;background:#1e1e2a;color:#6a6a7a;font-family:'Barlow Condensed';letter-spacing:2px;font-size:0.85rem;text-align:center;padding:16px">IMAGEN AD<br>CERRAJERÍA</div>
-                </div>
-                <div class="gallery-item">
-                    <div style="display:flex;align-items:center;justify-content:center;height:100%;background:#1e1e2a;color:#6a6a7a;font-family:'Barlow Condensed';letter-spacing:2px;font-size:0.85rem;text-align:center;padding:16px">IMAGEN AD<br>CONTROLES</div>
-                </div>
-                <div class="gallery-item wide">
-                    <div style="display:flex;align-items:center;justify-content:center;height:100%;background:#1e1e2a;color:#6a6a7a;font-family:'Barlow Condensed';letter-spacing:2px;font-size:0.85rem;text-align:center;padding:16px">IMAGEN PANORÁMICA<br>UNIDAD MÓVIL / SERVICIO EN CAMPO</div>
+            </div>
+
+            <!-- Ads carousel (square) -->
+            <div class="fade-in" style="margin-top:48px">
+                <p class="section-label" style="text-align:center;margin-bottom:20px" data-i18n="ads-label">Campañas Publicitarias</p>
+                <div class="cards-carousel-wrapper">
+                    <div class="cards-carousel-track ads-square-track" id="adsTrack">
+                        <div class="card-slide ads-slide" onclick="openAdsLightbox(this.querySelector('img'))"><img src="images/ads/ad01.jpg" alt="Cerrajería Móvil Tijuana campaña"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide ads-slide" onclick="openAdsLightbox(this.querySelector('img'))"><img src="images/ads/ad02.jpg" alt="Cerrajería automotriz Tijuana"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide ads-slide" onclick="openAdsLightbox(this.querySelector('img'))"><img src="images/ads/ad03.png" alt="Llaves con chip Tijuana"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide ads-slide" onclick="openAdsLightbox(this.querySelector('img'))"><img src="images/ads/ad04.jpg" alt="Controles portones Tijuana"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide ads-slide" onclick="openAdsLightbox(this.querySelector('img'))"><img src="images/ads/ad05.png" alt="Cerrajería móvil 24 horas"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide ads-slide" onclick="openAdsLightbox(this.querySelector('img'))"><img src="images/ads/ad06.jpg" alt="Programación llaves Tijuana"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide ads-slide" onclick="openAdsLightbox(this.querySelector('img'))"><img src="images/ads/ad07.jpg" alt="Apertura de autos Tijuana"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide ads-slide" onclick="openAdsLightbox(this.querySelector('img'))"><img src="images/ads/ad07.png" alt="Cerrajero automotriz Tijuana"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide ads-slide" onclick="openAdsLightbox(this.querySelector('img'))"><img src="images/ads/ad09.png" alt="Servicio cerrajería Rosarito"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide ads-slide" onclick="openAdsLightbox(this.querySelector('img'))"><img src="images/ads/ad10.jpg" alt="Unidad móvil cerrajería"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide ads-slide" onclick="openAdsLightbox(this.querySelector('img'))"><img src="images/ads/ad11.png" alt="Cerrajería móvil publicidad"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide ads-slide" onclick="openAdsLightbox(this.querySelector('img'))"><img src="images/ads/ad12.png" alt="Llaves proximidad Tijuana"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide ads-slide" onclick="openAdsLightbox(this.querySelector('img'))"><img src="images/ads/ad13.png" alt="Cerrajería residencial Tijuana"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide ads-slide" onclick="openAdsLightbox(this.querySelector('img'))"><img src="images/ads/ad14.png" alt="Emergencia cerrajería 24hrs"><div class="card-zoom-overlay">+</div></div>
+                        <div class="card-slide ads-slide" onclick="openAdsLightbox(this.querySelector('img'))"><img src="images/ads/ad15.png" alt="Cerrajería móvil anuncio"><div class="card-zoom-overlay">+</div></div>
+                    </div>
+                    <div class="cards-carousel-nav">
+                        <button class="cards-nav-btn" id="adsPrev" onclick="adsNav(-1)" aria-label="Anterior">&#8592;</button>
+                        <span class="cards-counter" id="adsCounter">1 / 11</span>
+                        <button class="cards-nav-btn" id="adsNext" onclick="adsNav(1)" aria-label="Siguiente">&#8594;</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1613,20 +2128,22 @@
         <div class="container">
             <div class="coverage-grid">
                 <div class="fade-in">
-                    <p class="section-label">Área de Cobertura</p>
-                    <h2 class="section-title">SERVICIO EN TODA<br>TIJUANA</h2>
-                    <p class="section-desc">Llegamos a tu ubicación con nuestra unidad móvil completamente equipada. Atención rápida en todas las zonas de Tijuana.</p>
+                    <p class="section-label" data-i18n="coverage-label">Área de Cobertura</p>
+                    <h2 class="section-title" data-i18n="coverage-title">SERVICIO EN TODA<br>TIJUANA Y ROSARITO</h2>
+                    <p class="section-desc" data-i18n="coverage-desc">Llegamos a tu ubicación con nuestra unidad móvil completamente equipada. Atención rápida en todas las zonas de Tijuana y Rosarito.</p>
                     <div class="coverage-zones">
-                        <div class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Zona Río</div>
-                        <div class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Zona Centro</div>
-                        <div class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Playas de Tijuana</div>
-                        <div class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Otay</div>
-                        <div class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> La Mesa</div>
-                        <div class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Blvd. Insurgentes</div>
-                        <div class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Blvd. Cucapah</div>
-                        <div class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Blvd. Casa Blanca</div>
-                        <div class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Las Huertas</div>
-                        <div class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Toda la ciudad</div>
+                        <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20solicitar%20un%20servicio%20de%20cerrajer%C3%ADa%20para%20Zona%20R%C3%ADo" target="_blank" class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Zona Río</a>
+                        <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20solicitar%20un%20servicio%20de%20cerrajer%C3%ADa%20para%20Zona%20Centro" target="_blank" class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Zona Centro</a>
+                        <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20solicitar%20un%20servicio%20de%20cerrajer%C3%ADa%20para%20Playas%20de%20Tijuana" target="_blank" class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Playas de Tijuana</a>
+                        <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20solicitar%20un%20servicio%20de%20cerrajer%C3%ADa%20para%20Otay" target="_blank" class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Otay</a>
+                        <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20solicitar%20un%20servicio%20de%20cerrajer%C3%ADa%20para%20La%20Mesa" target="_blank" class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> La Mesa</a>
+                        <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20solicitar%20un%20servicio%20de%20cerrajer%C3%ADa%20para%20Blvd.%20Insurgentes" target="_blank" class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Blvd. Insurgentes</a>
+                        <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20solicitar%20un%20servicio%20de%20cerrajer%C3%ADa%20para%20Blvd.%20Cucapah" target="_blank" class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Blvd. Cucapah</a>
+                        <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20solicitar%20un%20servicio%20de%20cerrajer%C3%ADa%20para%20Blvd.%20Casa%20Blanca" target="_blank" class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Blvd. Casa Blanca</a>
+                        <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20solicitar%20un%20servicio%20de%20cerrajer%C3%ADa%20para%20Las%20Huertas" target="_blank" class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Las Huertas</a>
+                        <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20solicitar%20un%20servicio%20de%20cerrajer%C3%ADa%20para%20Rosarito%20Centro" target="_blank" class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Rosarito Centro</a>
+                        <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20solicitar%20un%20servicio%20de%20cerrajer%C3%ADa%20para%20Rosarito%20Norte" target="_blank" class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Rosarito Norte</a>
+                        <a href="https://wa.me/5216641117147?text=Hola%2C%20quiero%20solicitar%20un%20servicio%20de%20cerrajer%C3%ADa%20para%20Tijuana" target="_blank" class="zone-chip"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Toda la ciudad</a>
                     </div>
                 </div>
                 <div class="coverage-map fade-in">
@@ -1648,8 +2165,8 @@
     <section class="payments">
         <div class="container">
             <div class="payments-inner fade-in">
-                <p class="section-label">Formas de Pago</p>
-                <h2 class="section-title" style="font-size:1.8rem">ACEPTAMOS MÚLTIPLES MÉTODOS DE PAGO</h2>
+                <p class="section-label" data-i18n="payments-label">Formas de Pago</p>
+                <h2 class="section-title" style="font-size:1.8rem" data-i18n="payments-title">ACEPTAMOS MÚLTIPLES MÉTODOS DE PAGO</h2>
                 <div class="payments-grid">
                     <span class="payment-badge">Efectivo</span>
                     <span class="payment-badge">Visa</span>
@@ -1677,22 +2194,22 @@
     <section class="cta-section" id="contacto">
         <div class="container">
             <div class="cta-card fade-in">
-                <p class="section-label">¿Necesitas un cerrajero?</p>
-                <h2 class="section-title">ESTAMOS LISTOS<br>PARA AYUDARTE</h2>
+                <p class="section-label" data-i18n="cta-label">¿Necesitas un cerrajero?</p>
+                <h2 class="section-title" data-i18n="cta-title">ESTAMOS LISTOS<br>PARA AYUDARTE</h2>
                 <div class="cta-phone-big">
                     <a href="tel:6641117147" style="color:inherit">664-111-7147</a>
                 </div>
-                <p class="section-desc" style="margin:0 auto 40px;text-align:center">
+                <p class="section-desc" style="margin:0 auto 40px;text-align:center" data-i18n="cta-desc">
                     Llámanos o envía un WhatsApp para recibir atención inmediata. Servicio a domicilio disponible las 24 horas, los 365 días del año.
                 </p>
                 <div class="cta-buttons">
                     <a href="tel:6641117147" class="btn-hero-call">
                         <i data-lucide="phone" style="width:20px;height:20px"></i>
-                        LLAMAR AHORA
+                        <span data-i18n="btn-call-cta">LLAMAR AHORA</span>
                     </a>
                     <a href="https://wa.me/5216641117147?text=Hola%2C%20necesito%20servicio%20de%20cerrajer%C3%ADa.%20%C2%BFEst%C3%A1n%20disponibles%3F" target="_blank" class="btn-hero-wa">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.317 0-4.478-.682-6.308-1.853l-.442-.282-3.106 1.041 1.041-3.106-.282-.442A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                        ENVIAR WHATSAPP
+                        <span data-i18n="btn-wa-cta">ENVIAR WHATSAPP</span>
                     </a>
                 </div>
             </div>
@@ -1759,6 +2276,17 @@
     </footer>
 
     <!-- ============================================
+         LIGHTBOX
+         ============================================ -->
+    <div id="galleryLightbox" class="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">&#10005;</button>
+        <button class="lightbox-nav prev" onclick="lbNav(-1)" aria-label="Anterior">&#8592;</button>
+        <img id="lbImg" class="lightbox-img" src="" alt="Galería cerrajería Móvil Tijuana">
+        <button class="lightbox-nav next" onclick="lbNav(1)" aria-label="Siguiente">&#8594;</button>
+        <div id="lbCounter" class="lightbox-counter">1 / 8</div>
+    </div>
+
+    <!-- ============================================
          FLOATING WHATSAPP
          ============================================ -->
     <a href="https://wa.me/5216641117147?text=Hola%2C%20necesito%20servicio%20de%20cerrajer%C3%ADa.%20%C2%BFEst%C3%A1n%20disponibles%3F" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
@@ -1778,34 +2306,351 @@
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
-
-        // Close mobile menu on link click
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
         });
 
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             navbar.classList.toggle('scrolled', window.scrollY > 50);
-        });
+        }, { passive: true });
 
         // Scroll animation observer
         const fadeElements = document.querySelectorAll('.fade-in');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * 100);
+                    setTimeout(() => entry.target.classList.add('visible'), index * 100);
                     observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
         fadeElements.forEach(el => observer.observe(el));
+
+        // ============================================
+        // HERO CAROUSEL
+        // ============================================
+        let heroIndex = 0;
+        const heroSlides = document.querySelectorAll('#heroCarousel .hero-carousel-slide');
+        const heroDots = document.querySelectorAll('#heroCarousel .carousel-dot');
+        let heroTimer;
+
+        function heroGoTo(n) {
+            heroSlides[heroIndex].classList.remove('active');
+            heroDots[heroIndex].classList.remove('active');
+            heroIndex = ((n % heroSlides.length) + heroSlides.length) % heroSlides.length;
+            heroSlides[heroIndex].classList.add('active');
+            heroDots[heroIndex].classList.add('active');
+            clearInterval(heroTimer);
+            heroTimer = setInterval(() => heroGoTo(heroIndex + 1), 5000);
+        }
+        heroTimer = setInterval(() => heroGoTo(heroIndex + 1), 5000);
+
+        // ============================================
+        // PARALLAX HERO
+        // ============================================
+        const heroSection = document.getElementById('inicio');
+        const heroImageMain = heroSection ? heroSection.querySelector('.hero-image-main') : null;
+        const heroGridBg = heroSection ? heroSection.querySelector('.hero-grid-bg') : null;
+
+        window.addEventListener('scroll', () => {
+            if (!heroSection) return;
+            const sy = window.scrollY;
+            const hh = heroSection.offsetHeight;
+            if (sy < hh + 200) {
+                if (heroImageMain) heroImageMain.style.transform = `translateY(${sy * 0.22}px)`;
+                if (heroGridBg) heroGridBg.style.transform = `translateY(${sy * 0.1}px)`;
+            }
+        }, { passive: true });
+
+        // ============================================
+        // CARDS CAROUSEL
+        // ============================================
+        let cardsPos = 0;
+        const cardsTrack = document.getElementById('cardsTrack');
+
+        function getCardsVisible() {
+            if (window.innerWidth <= 480) return 1;
+            if (window.innerWidth <= 768) return 2;
+            if (window.innerWidth <= 1024) return 3;
+            return 4;
+        }
+
+        function cardsNav(dir) {
+            if (!cardsTrack) return;
+            const total = cardsTrack.children.length;
+            const visible = getCardsVisible();
+            const maxPos = Math.max(0, total - visible);
+            cardsPos = Math.max(0, Math.min(cardsPos + dir, maxPos));
+            const cardWidth = cardsTrack.children[0].offsetWidth + 16;
+            cardsTrack.style.transform = `translateX(-${cardsPos * cardWidth}px)`;
+            document.getElementById('cardsCounter').textContent = (cardsPos + 1) + ' / ' + (maxPos + 1);
+            document.getElementById('cardsPrev').disabled = cardsPos === 0;
+            document.getElementById('cardsNext').disabled = cardsPos >= maxPos;
+        }
+
+        if (cardsTrack) {
+            document.getElementById('cardsPrev').disabled = true;
+            window.addEventListener('resize', () => { cardsPos = 0; cardsTrack.style.transform = 'translateX(0)'; cardsNav(0); });
+        }
+
+        // ============================================
+        // ADS CAROUSEL (square)
+        // ============================================
+        let adsPos = 0;
+        const adsTrack = document.getElementById('adsTrack');
+
+        function getAdsVisible() {
+            if (window.innerWidth <= 480) return 1;
+            if (window.innerWidth <= 768) return 2;
+            if (window.innerWidth <= 1024) return 3;
+            return 5;
+        }
+
+        function adsNav(dir) {
+            if (!adsTrack) return;
+            const total = adsTrack.children.length;
+            const visible = getAdsVisible();
+            const maxPos = Math.max(0, total - visible);
+            adsPos = Math.max(0, Math.min(adsPos + dir, maxPos));
+            const adsWidth = adsTrack.children[0].offsetWidth + 16;
+            adsTrack.style.transform = `translateX(-${adsPos * adsWidth}px)`;
+            document.getElementById('adsCounter').textContent = (adsPos + 1) + ' / ' + (maxPos + 1);
+            document.getElementById('adsPrev').disabled = adsPos === 0;
+            document.getElementById('adsNext').disabled = adsPos >= maxPos;
+        }
+
+        if (adsTrack) {
+            document.getElementById('adsPrev').disabled = true;
+            window.addEventListener('resize', () => { adsPos = 0; adsTrack.style.transform = 'translateX(0)'; adsNav(0); });
+        }
+
+        // ============================================
+        // LIGHTBOX
+        // ============================================
+        let lbImages = [];
+        let lbIdx = 0;
+
+        function openLightbox(images, idx) {
+            lbImages = images;
+            lbIdx = idx;
+            const lb = document.getElementById('galleryLightbox');
+            document.getElementById('lbImg').src = lbImages[lbIdx];
+            document.getElementById('lbCounter').textContent = (lbIdx + 1) + ' / ' + lbImages.length;
+            lb.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('galleryLightbox').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function lbNav(dir) {
+            lbIdx = ((lbIdx + dir) + lbImages.length) % lbImages.length;
+            document.getElementById('lbImg').src = lbImages[lbIdx];
+            document.getElementById('lbCounter').textContent = (lbIdx + 1) + ' / ' + lbImages.length;
+        }
+
+        function openCardLightbox(imgEl) {
+            const all = Array.from(document.querySelectorAll('#cardsTrack .card-slide img'));
+            const srcs = all.map(i => i.src);
+            const idx = all.indexOf(imgEl);
+            openLightbox(srcs, idx >= 0 ? idx : 0);
+        }
+
+        function openAdsLightbox(imgEl) {
+            const all = Array.from(document.querySelectorAll('#adsTrack .card-slide img'));
+            const srcs = all.map(i => i.src);
+            const idx = all.indexOf(imgEl);
+            openLightbox(srcs, idx >= 0 ? idx : 0);
+        }
+
+        const lbEl = document.getElementById('galleryLightbox');
+        if (lbEl) {
+            lbEl.addEventListener('click', (e) => { if (e.target === lbEl) closeLightbox(); });
+        }
+        document.addEventListener('keydown', (e) => {
+            if (!lbEl || !lbEl.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') lbNav(-1);
+            if (e.key === 'ArrowRight') lbNav(1);
+        });
+
+        // ============================================
+        // LANGUAGE TOGGLE (ES / EN)
+        // ============================================
+        let currentLang = 'es';
+
+        const i18n = {
+            es: {
+                'nav-home': 'Inicio',
+                'nav-services': 'Servicios',
+                'nav-about': 'Nosotros',
+                'nav-gallery': 'Galería',
+                'nav-coverage': 'Cobertura',
+                'nav-contact': 'Contacto',
+                'topbar-text': 'DISPONIBLE AHORA — SERVICIO DE URGENCIA 24/7',
+                'topbar-call': 'LLAMA: 664-111-7147',
+                'lang-btn': '🇺🇸 EN',
+                'english-spoken': '🇺🇸 ENGLISH SPOKEN',
+                'hero-badge-text': 'SERVICIO ACTIVO 24/7',
+                'hero-h1': 'CERRAJERÍA<br><span class="highlight">AUTOMOTRIZ</span><br>EN TIJUANA',
+                'hero-subtitle': 'Más de <strong>30 años de experiencia</strong> en apertura de autos, programación de llaves con chip, controles para portones y atención de emergencia a domicilio con <strong>software original de agencia</strong>.',
+                'btn-call-hero': 'LLAMAR AHORA',
+                'btn-wa-hero': 'WHATSAPP',
+                'trust-years': 'Años de experiencia',
+                'trust-available': 'Siempre disponibles',
+                'trust-days': 'Días del año',
+                'floating-title': 'Software Original',
+                'floating-subtitle': 'Nissan · Ford · Chevrolet · VW',
+                'services-label': 'Nuestros Servicios',
+                'services-title': 'SOLUCIONES PROFESIONALES<br>PARA TU SEGURIDAD',
+                'services-desc': 'Atención especializada con equipo de última tecnología y software original de agencia para todas las marcas.',
+                's1-title': 'Cerrajería Automotriz',
+                's1-desc': 'Apertura de autos de todas las marcas y modelos. Servicio rápido con herramienta especializada sin dañar tu vehículo.',
+                's1-cta': 'Solicitar Servicio',
+                's2-title': 'Programación de Llaves con Chip',
+                's2-desc': 'Duplicado y programación por computadora de llaves inteligentes con software original de agencia. Nissan, Ford, Chevrolet y VW.',
+                's2-cta': 'Solicitar Servicio',
+                's3-title': 'Controles para Portones',
+                's3-desc': 'Venta y clonación de controles compatibles para portones eléctricos, garage y accesos de privadas con alta durabilidad.',
+                's3-cta': 'Solicitar Servicio',
+                's4-title': 'Cerrajería Residencial',
+                's4-desc': 'Apertura, mantenimiento e instalación de cerraduras para hogares, privadas y accesos controlados.',
+                's4-cta': 'Solicitar Servicio',
+                's5-title': 'Llaves de Proximidad',
+                's5-desc': 'Programación y duplicado de llaves de proximidad para vehículos de última generación con tecnología avanzada.',
+                's5-cta': 'Solicitar Servicio',
+                's6-title': 'Servicios de Urgencia',
+                's6-desc': 'Respuesta inmediata ante emergencias. Llegamos a tu ubicación en Tijuana con equipo completo y soluciones listas.',
+                's6-cta': '🚨 Urgencia — Escribir ahora',
+                'featured-label': 'Servicio Destacado',
+                'featured-title': 'UNIDAD MÓVIL EQUIPADA',
+                'featured-desc': 'Contamos con una unidad móvil perfectamente equipada con computadora para diagnóstico y programación de computadoras y tableros de todo tipo de autos.',
+                'featured-f1': 'Software original de agencia',
+                'featured-f2': 'Programación por computadora',
+                'featured-f3': 'Servicio a domicilio en toda Tijuana y Rosarito',
+                'featured-f4': 'Clonación de controles sin ir a tu casa',
+                'featured-f5': 'Tarjetas electrónicas certificadas',
+                'featured-cta': 'Solicitar Unidad Móvil',
+                'brands-label': 'Marcas que Trabajamos',
+                'brands-title': 'SOFTWARE ORIGINAL DE AGENCIA',
+                'about-label': '¿Por qué elegirnos?',
+                'about-title': 'CALIDAD Y CONFIANZA',
+                'about-text': 'Somos <strong>Cerrajería Móvil Tijuana</strong>, especialistas en soluciones profesionales de cerrajería automotriz y residencial con más de 30 años de experiencia. Contamos con personal capacitado, software original y una unidad móvil completamente equipada para resolver cualquier situación en el momento que lo necesites.',
+                'stat-years': 'AÑOS',
+                'stat-avail': 'DISPONIBLE',
+                'stat-warranty': 'GARANTÍA',
+                'about-btn': 'SOLICITAR SERVICIO',
+                'gallery-label': 'Nuestro Trabajo',
+                'gallery-title': 'GALERÍA',
+                'gallery-subtitle': 'Toca cada imagen para ampliarla.',
+                'ads-label': 'Campañas Publicitarias',
+                'coverage-label': 'Área de Cobertura',
+                'coverage-title': 'SERVICIO EN TODA<br>TIJUANA Y ROSARITO',
+                'coverage-desc': 'Llegamos a tu ubicación con nuestra unidad móvil completamente equipada. Atención rápida en todas las zonas de Tijuana y Rosarito.',
+                'payments-label': 'Formas de Pago',
+                'payments-title': 'ACEPTAMOS MÚLTIPLES MÉTODOS DE PAGO',
+                'cta-label': '¿Necesitas un cerrajero?',
+                'cta-title': 'ESTAMOS LISTOS<br>PARA AYUDARTE',
+                'cta-desc': 'Llámanos o envía un WhatsApp para recibir atención inmediata. Servicio a domicilio disponible las 24 horas, los 365 días del año.',
+                'btn-call-cta': 'LLAMAR AHORA',
+                'btn-wa-cta': 'ENVIAR WHATSAPP',
+            },
+            en: {
+                'nav-home': 'Home',
+                'nav-services': 'Services',
+                'nav-about': 'About',
+                'nav-gallery': 'Gallery',
+                'nav-coverage': 'Coverage',
+                'nav-contact': 'Contact',
+                'topbar-text': 'AVAILABLE NOW — EMERGENCY SERVICE 24/7',
+                'topbar-call': 'CALL: 664-111-7147',
+                'lang-btn': '🇲🇽 ES',
+                'english-spoken': '🇲🇽 ESPAÑOL',
+                'hero-badge-text': 'ACTIVE SERVICE 24/7',
+                'hero-h1': 'MOBILE<br><span class="highlight">LOCKSMITH</span><br>TIJUANA',
+                'hero-subtitle': 'Over <strong>30 years of experience</strong> in car unlocking, chip key programming, gate remotes and emergency service at your location with <strong>original dealer software</strong>.',
+                'btn-call-hero': 'CALL NOW',
+                'btn-wa-hero': 'WHATSAPP',
+                'trust-years': 'Years of experience',
+                'trust-available': 'Always available',
+                'trust-days': 'Days a year',
+                'floating-title': 'Original Software',
+                'floating-subtitle': 'Nissan · Ford · Chevrolet · VW',
+                'services-label': 'Our Services',
+                'services-title': 'PROFESSIONAL SOLUTIONS<br>FOR YOUR SECURITY',
+                'services-desc': 'Specialized service with state-of-the-art equipment and original dealer software for all brands.',
+                's1-title': 'Automotive Locksmith',
+                's1-desc': 'Car unlocking for all makes and models. Fast service with specialized tools without damaging your vehicle.',
+                's1-cta': 'Request Service',
+                's2-title': 'Chip Key Programming',
+                's2-desc': 'Computer duplication and programming of smart keys with original dealer software. Nissan, Ford, Chevrolet & VW.',
+                's2-cta': 'Request Service',
+                's3-title': 'Gate Remotes & Controls',
+                's3-desc': 'Sale and cloning of compatible remotes for electric gates, garages and private community access with high durability.',
+                's3-cta': 'Request Service',
+                's4-title': 'Residential Locksmith',
+                's4-desc': 'Opening, maintenance and installation of locks for homes, private communities and controlled access.',
+                's4-cta': 'Request Service',
+                's5-title': 'Proximity Key Fobs',
+                's5-desc': 'Programming and duplication of proximity keys for latest generation vehicles with advanced technology.',
+                's5-cta': 'Request Service',
+                's6-title': 'Emergency Services',
+                's6-desc': 'Immediate response to emergencies. We come to your location in Tijuana with full equipment and ready solutions.',
+                's6-cta': '🚨 Emergency — Write now',
+                'featured-label': 'Featured Service',
+                'featured-title': 'FULLY EQUIPPED MOBILE UNIT',
+                'featured-desc': 'We have a fully equipped mobile unit with a computer for diagnostics and programming of computers and dashboards for all types of cars.',
+                'featured-f1': 'Original dealer software',
+                'featured-f2': 'Computer programming on-site',
+                'featured-f3': 'Home service throughout Tijuana & Rosarito',
+                'featured-f4': 'Remote cloning without coming to your home',
+                'featured-f5': 'Certified electronic cards',
+                'featured-cta': 'Request Mobile Unit',
+                'brands-label': 'Brands We Service',
+                'brands-title': 'ORIGINAL DEALER SOFTWARE',
+                'about-label': 'Why Choose Us?',
+                'about-title': 'QUALITY & TRUST',
+                'about-text': 'We are <strong>Cerrajería Móvil Tijuana</strong>, specialists in professional automotive and residential locksmith solutions with over 30 years of experience. We have trained staff, original software and a fully equipped mobile unit to resolve any situation whenever you need us.',
+                'stat-years': 'YEARS',
+                'stat-avail': 'AVAILABLE',
+                'stat-warranty': 'WARRANTY',
+                'about-btn': 'REQUEST SERVICE',
+                'gallery-label': 'Our Work',
+                'gallery-title': 'GALLERY',
+                'gallery-subtitle': 'Tap each image to enlarge it.',
+                'ads-label': 'Ad Campaigns',
+                'coverage-label': 'Coverage Area',
+                'coverage-title': 'SERVICE THROUGHOUT<br>TIJUANA & ROSARITO',
+                'coverage-desc': 'We come to your location with our fully equipped mobile unit. Fast service throughout all areas of Tijuana and Rosarito.',
+                'payments-label': 'Payment Methods',
+                'payments-title': 'WE ACCEPT MULTIPLE PAYMENT METHODS',
+                'cta-label': 'Need a Locksmith?',
+                'cta-title': "WE'RE READY<br>TO HELP YOU",
+                'cta-desc': 'Call us or send a WhatsApp for immediate assistance. Home service available 24 hours a day, 365 days a year.',
+                'btn-call-cta': 'CALL NOW',
+                'btn-wa-cta': 'SEND WHATSAPP',
+            }
+        };
+
+        function toggleLang() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            applyTranslations();
+        }
+
+        function applyTranslations() {
+            const t = i18n[currentLang];
+            const btn = document.getElementById('langToggle');
+            if (btn) { btn.innerHTML = t['lang-btn']; btn.classList.toggle('en-active', currentLang === 'en'); }
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key] !== undefined) el.innerHTML = t[key];
+            });
+            lucide.createIcons();
+        }
 
         // Schema.org structured data
         const schemaScript = document.createElement('script');
