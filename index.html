@@ -1578,6 +1578,298 @@
         }
 
         /* ============================================
+           CONTROLS / PORTONES BANNER
+           ============================================ */
+        .controls-banner {
+            position: relative;
+            padding: 100px 0;
+            overflow: hidden;
+            background-image: url('images/hero/banner3.jpg');
+            background-size: cover;
+            background-position: center top;
+        }
+
+        .controls-banner-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg, rgba(11,26,18,0.93) 0%, rgba(13,35,24,0.88) 40%, rgba(7,20,14,0.95) 100%),
+                radial-gradient(ellipse 60% 80% at 80% 50%, rgba(72, 187, 120, 0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 50% at 10% 80%, rgba(37, 211, 102, 0.07) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .controls-banner-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .controls-banner-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(72, 187, 120, 0.15);
+            border: 1px solid rgba(72, 187, 120, 0.35);
+            color: var(--accent-green);
+            font-family: var(--font-condensed);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 7px 16px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+        }
+
+        .controls-banner-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            line-height: 1.05;
+            letter-spacing: 1px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .controls-highlight {
+            color: var(--accent-green);
+            text-shadow: 0 0 40px rgba(72, 187, 120, 0.5);
+        }
+
+        .controls-banner-desc {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 36px;
+            max-width: 520px;
+        }
+
+        .controls-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .controls-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(72, 187, 120, 0.15);
+            border-radius: 12px;
+            padding: 16px 18px;
+            transition: all 0.25s;
+        }
+
+        .controls-list li:hover {
+            background: rgba(72, 187, 120, 0.08);
+            border-color: rgba(72, 187, 120, 0.35);
+        }
+
+        .controls-list-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(72, 187, 120, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-green);
+            flex-shrink: 0;
+        }
+
+        .controls-list li strong {
+            display: block;
+            color: #fff;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .controls-list li span {
+            color: rgba(255,255,255,0.55);
+            font-size: 0.85rem;
+        }
+
+        .controls-banner-ctas {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn-controls-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-green);
+            color: #07140e;
+            font-family: var(--font-condensed);
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.25s;
+            box-shadow: 0 6px 30px rgba(72, 187, 120, 0.3);
+        }
+
+        .btn-controls-wa:hover {
+            background: #38d68a;
+            box-shadow: 0 8px 40px rgba(72, 187, 120, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-controls-call {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: #fff;
+            font-family: var(--font-condensed);
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            padding: 14px 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.25);
+            text-decoration: none;
+            transition: all 0.25s;
+        }
+
+        .btn-controls-call:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        /* Right side gallery */
+        .controls-banner-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .controls-gallery {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(72,187,120,0.25);
+        }
+
+        .controls-gallery-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .controls-gallery-slide.active { opacity: 1; }
+
+        .controls-gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .controls-gallery-dots {
+            position: absolute;
+            bottom: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 5;
+        }
+
+        .ctrl-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: all 0.25s;
+        }
+
+        .ctrl-dot.active {
+            background: var(--accent-green);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        .controls-stats-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .controls-stat {
+            flex: 1;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(72,187,120,0.2);
+            border-radius: 14px;
+            padding: 16px 10px;
+            text-align: center;
+        }
+
+        .controls-stat--alt {
+            border-color: rgba(246,173,85,0.2);
+            background: rgba(246,173,85,0.06);
+        }
+
+        .controls-stat-num {
+            font-family: var(--font-display);
+            font-size: 1.7rem;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .controls-stat--alt .controls-stat-num { color: var(--accent-amber); }
+
+        .controls-stat-label {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .controls-brands-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .controls-brand-tag {
+            background: rgba(72, 187, 120, 0.1);
+            border: 1px solid rgba(72, 187, 120, 0.25);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.78rem;
+            font-family: var(--font-condensed);
+            letter-spacing: 1px;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .controls-banner-inner {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .controls-stats-row { gap: 8px; }
+            .controls-stat-num { font-size: 1.4rem; }
+        }
+
+        /* ============================================
            ADS SQUARE CAROUSEL
            ============================================ */
         .ads-slide {
@@ -1855,10 +2147,14 @@
                             <div class="hero-carousel-slide">
                                 <img src="images/hero/banner2.jpg" alt="Servicio cerrajería Tijuana y Rosarito">
                             </div>
+                            <div class="hero-carousel-slide">
+                                <img src="images/hero/banner3.jpg" alt="Controles y accesos residenciales Tijuana">
+                            </div>
                             <div class="hero-carousel-dots">
                                 <button class="carousel-dot active" onclick="heroGoTo(0)" aria-label="Slide 1"></button>
                                 <button class="carousel-dot" onclick="heroGoTo(1)" aria-label="Slide 2"></button>
                                 <button class="carousel-dot" onclick="heroGoTo(2)" aria-label="Slide 3"></button>
+                                <button class="carousel-dot" onclick="heroGoTo(3)" aria-label="Slide 4"></button>
                             </div>
                         </div>
                     </div>
@@ -1982,6 +2278,120 @@
                         </a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CONTROLES / PORTONES BANNER
+         ============================================ -->
+    <section class="controls-banner">
+        <div class="controls-banner-bg"></div>
+        <div class="container">
+            <div class="controls-banner-inner">
+
+                <!-- Left: headline + bullets + CTA -->
+                <div class="controls-banner-content fade-in">
+                    <div class="controls-banner-label">
+                        <i data-lucide="radio" style="width:16px;height:16px"></i>
+                        Servicio Estrella
+                    </div>
+                    <h2 class="controls-banner-title">
+                        CONTROLES &amp; ACCESOS<br>
+                        <span class="controls-highlight">CLONAMOS TU CONTROL</span><br>
+                        AL INSTANTE
+                    </h2>
+                    <p class="controls-banner-desc">
+                        ¿Perdiste o dañaste tu control de acceso? Sin cita previa, sin esperar — duplicamos y programamos controles para portones eléctricos, garage, privadas y accesos residenciales en minutos.
+                    </p>
+
+                    <ul class="controls-list">
+                        <li>
+                            <span class="controls-list-icon"><i data-lucide="copy" style="width:18px;height:18px"></i></span>
+                            <div>
+                                <strong>Clonación de controles</strong>
+                                <span>Copiamos tu control existente sin programación especial</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="controls-list-icon"><i data-lucide="key-round" style="width:18px;height:18px"></i></span>
+                            <div>
+                                <strong>Perdiste tu control de acceso</strong>
+                                <span>Lo reemplazamos y programamos con tu portón original</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="controls-list-icon"><i data-lucide="home" style="width:18px;height:18px"></i></span>
+                            <div>
+                                <strong>Controles para garage y privadas</strong>
+                                <span>Compatible con Linear, Liftmaster, Chamberlain, Sommer y más</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="controls-list-icon"><i data-lucide="zap" style="width:18px;height:18px"></i></span>
+                            <div>
+                                <strong>Servicio a domicilio inmediato</strong>
+                                <span>Vamos hasta tu casa o privada — Tijuana y Rosarito</span>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="controls-banner-ctas">
+                        <a href="https://wa.me/5216641117147?text=Hola%2C%20necesito%20clonar%20o%20programar%20un%20control%20de%20acceso.%20%C2%BFEst%C3%A1n%20disponibles%3F" target="_blank" class="btn-controls-wa">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.317 0-4.478-.682-6.308-1.853l-.442-.282-3.106 1.041 1.041-3.106-.282-.442A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                            Cotizar por WhatsApp
+                        </a>
+                        <a href="tel:6641117147" class="btn-controls-call">
+                            <i data-lucide="phone" style="width:18px;height:18px"></i>
+                            664-111-7147
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: image gallery + stats -->
+                <div class="controls-banner-cards fade-in">
+                    <div class="controls-gallery">
+                        <div class="controls-gallery-slide active">
+                            <img src="images/ads/ad01.jpg" alt="Clonación de controles residenciales Tijuana">
+                        </div>
+                        <div class="controls-gallery-slide">
+                            <img src="images/ads/ad06.jpg" alt="Programación de control de acceso Tijuana">
+                        </div>
+                        <div class="controls-gallery-slide">
+                            <img src="images/ads/ad07.jpg" alt="Control para portón eléctrico Tijuana">
+                        </div>
+                        <div class="controls-gallery-dots">
+                            <button class="ctrl-dot active" onclick="ctrlGalleryGo(0)"></button>
+                            <button class="ctrl-dot" onclick="ctrlGalleryGo(1)"></button>
+                            <button class="ctrl-dot" onclick="ctrlGalleryGo(2)"></button>
+                        </div>
+                    </div>
+                    <div class="controls-stats-row">
+                        <div class="controls-stat">
+                            <div class="controls-stat-num">+500</div>
+                            <div class="controls-stat-label">Controles clonados</div>
+                        </div>
+                        <div class="controls-stat">
+                            <div class="controls-stat-num">~15 min</div>
+                            <div class="controls-stat-label">Tiempo promedio</div>
+                        </div>
+                        <div class="controls-stat controls-stat--alt">
+                            <div class="controls-stat-num">100%</div>
+                            <div class="controls-stat-label">Garantizado</div>
+                        </div>
+                    </div>
+                    <div class="controls-brands-row">
+                        <span class="controls-brand-tag">Linear</span>
+                        <span class="controls-brand-tag">Liftmaster</span>
+                        <span class="controls-brand-tag">Chamberlain</span>
+                        <span class="controls-brand-tag">Sommer</span>
+                        <span class="controls-brand-tag">Genie</span>
+                        <span class="controls-brand-tag">Came</span>
+                        <span class="controls-brand-tag">Faac</span>
+                        <span class="controls-brand-tag">+ más</span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -2346,6 +2756,22 @@
             heroTimer = setInterval(() => heroGoTo(heroIndex + 1), 5000);
         }
         heroTimer = setInterval(() => heroGoTo(heroIndex + 1), 5000);
+
+        // ============================================
+        // CONTROLS IMAGE GALLERY
+        // ============================================
+        let ctrlGalleryIndex = 0;
+        const ctrlSlides = document.querySelectorAll('.controls-gallery-slide');
+        const ctrlDots = document.querySelectorAll('.ctrl-dot');
+
+        function ctrlGalleryGo(n) {
+            ctrlSlides[ctrlGalleryIndex].classList.remove('active');
+            ctrlDots[ctrlGalleryIndex].classList.remove('active');
+            ctrlGalleryIndex = ((n % ctrlSlides.length) + ctrlSlides.length) % ctrlSlides.length;
+            ctrlSlides[ctrlGalleryIndex].classList.add('active');
+            ctrlDots[ctrlGalleryIndex].classList.add('active');
+        }
+        setInterval(() => ctrlGalleryGo(ctrlGalleryIndex + 1), 3000);
 
         // ============================================
         // PARALLAX HERO
