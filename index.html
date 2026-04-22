@@ -302,6 +302,11 @@
             padding: 8px;
         }
 
+        /* Oculto por defecto, solo visible en menú hamburguesa activo */
+        .nav-call-mobile {
+            display: none;
+        }
+
         /* ============================================
            HERO SECTION
            ============================================ */
@@ -1204,7 +1209,7 @@
                 text-align: center;
             }
             .hero-right {
-                max-width: 500px;
+                max-width: 560px;
                 margin: 0 auto;
                 order: -1;
             }
@@ -1245,9 +1250,6 @@
             .btn-call-desktop {
                 display: none !important;
             }
-            .nav-call-mobile {
-                display: list-item;
-            }
             .logo-text {
                 font-size: 1rem;
                 letter-spacing: 1px;
@@ -1257,10 +1259,28 @@
             }
             .hero {
                 min-height: auto;
-                padding: 80px 0 60px;
+                padding: 16px 0 48px;
+            }
+            .hero-right {
+                max-width: 100%;
+                margin: 0;
+                order: -1;
+            }
+            .hero-image-main {
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
+                aspect-ratio: 16 / 9;
+                box-shadow: none;
             }
             .hero h1 {
-                font-size: clamp(2.5rem, 10vw, 3.5rem);
+                font-size: clamp(2.2rem, 9vw, 3rem);
+            }
+            .hero-badge {
+                margin-bottom: 16px;
+            }
+            .hero-left {
+                padding: 0 4px;
             }
             .services-grid {
                 grid-template-columns: 1fr;
