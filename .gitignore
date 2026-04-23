@@ -1,0 +1,4 @@
+# Videos — subir directo al VPS por SCP/SFTP, no por Git
+videos/*.mp4
+videos/*.mov
+videos/*.webm

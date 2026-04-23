@@ -2116,6 +2116,206 @@
         .hero-image-main {
             will-change: transform;
         }
+
+        /* ============================================
+           VIDEO REEL CAROUSEL
+           ============================================ */
+        .video-reel {
+            padding: 80px 0 60px;
+            background: var(--bg-dark);
+            border-top: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .video-reel-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .video-reel-overflow {
+            overflow: hidden;
+            padding: 12px 0 20px;
+        }
+
+        .video-reel-track {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+            user-select: none;
+            cursor: grab;
+        }
+
+        .video-reel-track.is-dragging {
+            cursor: grabbing;
+            transition: none;
+        }
+
+        .vcard {
+            flex-shrink: 0;
+            width: calc(33.333% - 14px);
+            position: relative;
+            border-radius: 22px;
+            overflow: hidden;
+            aspect-ratio: 9 / 16;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.55), 0 2px 10px rgba(0,0,0,0.3);
+            transform: translateY(0px);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .vcard:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.65), 0 4px 20px rgba(246,173,85,0.12);
+        }
+
+        .vcard video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+        }
+
+        /* Video card control buttons */
+        .vcard-controls {
+            position: absolute;
+            bottom: 14px;
+            right: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .vcard-sound-btn {
+            position: absolute;
+            bottom: 14px;
+            right: 14px;
+            width: 38px;
+            height: 38px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.25s, border-color 0.25s, transform 0.2s;
+            color: #fff;
+            pointer-events: auto;
+            padding: 0;
+        }
+
+        .vcard-sound-btn:hover {
+            background: rgba(246,173,85,0.75);
+            border-color: var(--accent-amber);
+            transform: scale(1.12);
+        }
+
+        .vcard-sound-btn svg {
+            width: 18px;
+            height: 18px;
+            display: block;
+            flex-shrink: 0;
+        }
+
+        .vcard-fs-btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 38px;
+            height: 38px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.25s, border-color 0.25s, transform 0.2s;
+            color: #fff;
+            pointer-events: auto;
+            padding: 0;
+        }
+
+        .vcard-fs-btn:hover {
+            background: rgba(246,173,85,0.75);
+            border-color: var(--accent-amber);
+            transform: scale(1.12);
+        }
+
+        .vcard-fs-btn svg {
+            width: 18px;
+            height: 18px;
+            display: block;
+            flex-shrink: 0;
+        }
+
+        .vr-nav-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .vr-nav-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s;
+            flex-shrink: 0;
+        }
+
+        .vr-nav-btn:hover {
+            border-color: var(--accent-amber);
+            background: rgba(246, 173, 85, 0.1);
+            color: var(--accent-amber);
+        }
+
+        .vr-nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .vr-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .vr-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 4px;
+            background: var(--border);
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: all 0.3s;
+        }
+
+        .vr-dot.active {
+            background: var(--accent-amber);
+            width: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .vcard { width: calc(50% - 10px); }
+        }
+        @media (max-width: 600px) {
+            .vcard { width: 78vw; }
+        }
     </style>
 </head>
 <body>
@@ -2243,6 +2443,107 @@
                             <span data-i18n="floating-subtitle">Nissan · Ford · Chevrolet · VW</span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         VIDEO REEL — CERRAJERO EN CAMPO
+         ============================================ -->
+    <section class="video-reel" id="videos">
+        <div class="container">
+            <div class="fade-in">
+                <div class="video-reel-overflow">
+                    <div class="video-reel-track" id="videoReelTrack">
+
+                        <div class="vcard">
+                            <video src="videos/reel-movil-1.mp4" autoplay muted loop playsinline preload="auto"></video>
+                            <button class="vcard-fs-btn" title="Pantalla completa" aria-label="Pantalla completa">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                            </button>
+                            <button class="vcard-sound-btn" title="Activar / silenciar" aria-label="Sonido">
+                                <svg class="icon-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                                <svg class="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                            </button>
+                        </div>
+
+                        <div class="vcard">
+                            <video src="videos/reel-movil-6.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                            <button class="vcard-fs-btn" title="Pantalla completa" aria-label="Pantalla completa">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                            </button>
+                            <button class="vcard-sound-btn" title="Activar / silenciar" aria-label="Sonido">
+                                <svg class="icon-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                                <svg class="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                            </button>
+                        </div>
+
+                        <div class="vcard">
+                            <video src="videos/reel-movil-7.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                            <button class="vcard-fs-btn" title="Pantalla completa" aria-label="Pantalla completa">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                            </button>
+                            <button class="vcard-sound-btn" title="Activar / silenciar" aria-label="Sonido">
+                                <svg class="icon-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                                <svg class="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                            </button>
+                        </div>
+
+                        <div class="vcard">
+                            <video src="videos/reel-movil-2.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                            <button class="vcard-fs-btn" title="Pantalla completa" aria-label="Pantalla completa">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                            </button>
+                            <button class="vcard-sound-btn" title="Activar / silenciar" aria-label="Sonido">
+                                <svg class="icon-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                                <svg class="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                            </button>
+                        </div>
+
+                        <div class="vcard">
+                            <video src="videos/reel-movil-3.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                            <button class="vcard-fs-btn" title="Pantalla completa" aria-label="Pantalla completa">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                            </button>
+                            <button class="vcard-sound-btn" title="Activar / silenciar" aria-label="Sonido">
+                                <svg class="icon-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                                <svg class="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                            </button>
+                        </div>
+
+                        <div class="vcard">
+                            <video src="videos/reel-movil-4.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                            <button class="vcard-fs-btn" title="Pantalla completa" aria-label="Pantalla completa">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                            </button>
+                            <button class="vcard-sound-btn" title="Activar / silenciar" aria-label="Sonido">
+                                <svg class="icon-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                                <svg class="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                            </button>
+                        </div>
+
+                        <div class="vcard">
+                            <video src="videos/reel-movil-5.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                            <button class="vcard-fs-btn" title="Pantalla completa" aria-label="Pantalla completa">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                            </button>
+                            <button class="vcard-sound-btn" title="Activar / silenciar" aria-label="Sonido">
+                                <svg class="icon-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                                <svg class="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="vr-nav-row">
+                    <button class="vr-nav-btn" id="vrPrev" aria-label="Anterior">
+                        <i data-lucide="chevron-left" style="width:20px;height:20px"></i>
+                    </button>
+                    <div class="vr-dots" id="vrDots"></div>
+                    <button class="vr-nav-btn" id="vrNext" aria-label="Siguiente">
+                        <i data-lucide="chevron-right" style="width:20px;height:20px"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -3252,6 +3553,182 @@
             }
         });
         document.head.appendChild(schemaScript);
+
+        // ============================================
+        // VIDEO REEL CAROUSEL
+        // ============================================
+        (function () {
+            var VR_INTERVAL = 3000;
+
+            var track = document.getElementById('videoReelTrack');
+            if (!track) return;
+
+            var cards = Array.from(track.querySelectorAll('.vcard'));
+            var prevBtn = document.getElementById('vrPrev');
+            var nextBtn = document.getElementById('vrNext');
+            var dotsWrap = document.getElementById('vrDots');
+            var vrIndex = 0;
+            var isDragging = false;
+            var dragStartX = 0;
+            var dragCurrentX = 0;
+            var vrAutoTimer = null;
+
+            // --- Per-card sound toggle ---
+            cards.forEach(function (card) {
+                var vid = card.querySelector('video');
+                var sBtn = card.querySelector('.vcard-sound-btn');
+                if (!sBtn || !vid) return;
+                var iMute = sBtn.querySelector('.icon-mute');
+                var iSound = sBtn.querySelector('.icon-sound');
+                sBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    vid.muted = !vid.muted;
+                    if (!vid.muted) {
+                        vid.play().catch(function () { vid.muted = true; });
+                        if (iMute) iMute.style.display = 'none';
+                        if (iSound) iSound.style.display = 'block';
+                    } else {
+                        if (iMute) iMute.style.display = 'block';
+                        if (iSound) iSound.style.display = 'none';
+                    }
+                });
+            });
+
+            // --- Per-card fullscreen ---
+            cards.forEach(function (card) {
+                var vid = card.querySelector('video');
+                var fsBtn = card.querySelector('.vcard-fs-btn');
+                if (!fsBtn || !vid) return;
+                fsBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    var el = vid;
+                    if (el.requestFullscreen) el.requestFullscreen();
+                    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+                    else if (el.webkitEnterFullscreen) el.webkitEnterFullscreen(); // iOS
+                });
+            });
+
+            // Re-mute a card when it scrolls out of view
+            function muteSoundOnHide(card) {
+                var vid = card.querySelector('video');
+                var sBtn = card.querySelector('.vcard-sound-btn');
+                if (!vid || vid.muted) return;
+                vid.muted = true;
+                if (sBtn) {
+                    var iMute = sBtn.querySelector('.icon-mute');
+                    var iSound = sBtn.querySelector('.icon-sound');
+                    if (iMute) iMute.style.display = 'block';
+                    if (iSound) iSound.style.display = 'none';
+                }
+            }
+
+            function getVrVisible() {
+                if (window.innerWidth <= 600) return 1;
+                if (window.innerWidth <= 900) return 2;
+                return 3;
+            }
+
+            function buildVrDots() {
+                dotsWrap.innerHTML = '';
+                cards.forEach(function (_, i) {
+                    var d = document.createElement('button');
+                    d.className = 'vr-dot' + (i === 0 ? ' active' : '');
+                    d.setAttribute('aria-label', 'Video ' + (i + 1));
+                    d.addEventListener('click', function () { vrGoTo(i); });
+                    dotsWrap.appendChild(d);
+                });
+            }
+
+            function getVrMaxIndex() {
+                return Math.max(0, cards.length - getVrVisible());
+            }
+
+            function updateVrPlayback() {
+                var vis = getVrVisible();
+                cards.forEach(function (card, i) {
+                    var vid = card.querySelector('video');
+                    if (!vid) return;
+                    if (i >= vrIndex && i < vrIndex + vis) {
+                        vid.play().catch(function () {});
+                    } else {
+                        vid.pause();
+                        muteSoundOnHide(card);
+                    }
+                });
+            }
+
+            function vrGoTo(idx) {
+                var max = getVrMaxIndex();
+                if (idx < 0) idx = max;
+                if (idx > max) idx = 0;
+                vrIndex = idx;
+                var cardW = cards[0].offsetWidth + 20;
+                track.style.transform = 'translateX(-' + (vrIndex * cardW) + 'px)';
+                dotsWrap.querySelectorAll('.vr-dot').forEach(function (d, i) {
+                    d.classList.toggle('active', i === vrIndex);
+                });
+                updateVrPlayback();
+                clearInterval(vrAutoTimer);
+                vrAutoTimer = setInterval(function () {
+                    vrGoTo(vrIndex >= getVrMaxIndex() ? 0 : vrIndex + 1);
+                }, VR_INTERVAL);
+            }
+
+            prevBtn.addEventListener('click', function () { vrGoTo(vrIndex - 1); });
+            nextBtn.addEventListener('click', function () { vrGoTo(vrIndex + 1); });
+
+            // Drag / touch support
+            function startDrag(x) { isDragging = true; dragStartX = x; dragCurrentX = x; track.classList.add('is-dragging'); clearInterval(vrAutoTimer); }
+            function moveDrag(x) { if (isDragging) dragCurrentX = x; }
+            function endDrag() {
+                if (!isDragging) return;
+                isDragging = false;
+                track.classList.remove('is-dragging');
+                var diff = dragStartX - dragCurrentX;
+                if (Math.abs(diff) > 50) {
+                    vrGoTo(diff > 0 ? vrIndex + 1 : vrIndex - 1);
+                } else {
+                    vrAutoTimer = setInterval(function () { vrGoTo(vrIndex >= getVrMaxIndex() ? 0 : vrIndex + 1); }, VR_INTERVAL);
+                }
+            }
+
+            track.addEventListener('mousedown', function (e) { startDrag(e.clientX); });
+            track.addEventListener('mousemove', function (e) { moveDrag(e.clientX); });
+            track.addEventListener('mouseup', endDrag);
+            track.addEventListener('mouseleave', endDrag);
+            track.addEventListener('touchstart', function (e) { startDrag(e.touches[0].clientX); }, { passive: true });
+            track.addEventListener('touchmove', function (e) { moveDrag(e.touches[0].clientX); }, { passive: true });
+            track.addEventListener('touchend', endDrag);
+            track.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+            // Pause all when section leaves viewport
+            var vrSection = track.closest('.video-reel');
+            if (vrSection && 'IntersectionObserver' in window) {
+                new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            updateVrPlayback();
+                            vrAutoTimer = setInterval(function () { vrGoTo(vrIndex >= getVrMaxIndex() ? 0 : vrIndex + 1); }, VR_INTERVAL);
+                        } else {
+                            cards.forEach(function (c) {
+                                var v = c.querySelector('video');
+                                if (v) v.pause();
+                                muteSoundOnHide(c);
+                            });
+                            clearInterval(vrAutoTimer);
+                        }
+                    });
+                }, { threshold: 0.15 }).observe(vrSection);
+            }
+
+            window.addEventListener('resize', function () {
+                buildVrDots();
+                vrGoTo(Math.min(vrIndex, getVrMaxIndex()));
+            });
+
+            buildVrDots();
+            vrGoTo(0);
+        })();
     </script>
 
 </body>
