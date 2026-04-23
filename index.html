@@ -2458,7 +2458,7 @@
                     <div class="video-reel-track" id="videoReelTrack">
 
                         <div class="vcard">
-                            <video src="videos/reel-movil-1.mp4" autoplay muted loop playsinline preload="auto"></video>
+                            <video src="videos/reel-movil-1.mp4" autoplay muted loop playsinline preload="none"></video>
                             <button class="vcard-fs-btn" title="Pantalla completa" aria-label="Pantalla completa">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
                             </button>
@@ -3595,17 +3595,46 @@
             });
 
             // --- Per-card fullscreen ---
+            var isFullscreen = false;
+
+            function resumeAutoTimer() {
+                clearInterval(vrAutoTimer);
+                vrAutoTimer = setInterval(function () {
+                    vrGoTo(vrIndex >= getVrMaxIndex() ? 0 : vrIndex + 1);
+                }, VR_INTERVAL);
+            }
+
             cards.forEach(function (card) {
                 var vid = card.querySelector('video');
                 var fsBtn = card.querySelector('.vcard-fs-btn');
                 if (!fsBtn || !vid) return;
+
                 fsBtn.addEventListener('click', function (e) {
                     e.stopPropagation();
-                    var el = vid;
-                    if (el.requestFullscreen) el.requestFullscreen();
-                    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-                    else if (el.webkitEnterFullscreen) el.webkitEnterFullscreen(); // iOS
+                    if (vid.requestFullscreen) vid.requestFullscreen();
+                    else if (vid.webkitRequestFullscreen) vid.webkitRequestFullscreen();
+                    else if (vid.webkitEnterFullscreen) vid.webkitEnterFullscreen(); // iOS
                 });
+
+                // Pause auto-advance while in fullscreen
+                vid.addEventListener('webkitbeginfullscreen', function () {
+                    isFullscreen = true;
+                    clearInterval(vrAutoTimer);
+                });
+                vid.addEventListener('webkitendfullscreen', function () {
+                    isFullscreen = false;
+                    resumeAutoTimer();
+                });
+            });
+
+            document.addEventListener('fullscreenchange', function () {
+                if (document.fullscreenElement) {
+                    isFullscreen = true;
+                    clearInterval(vrAutoTimer);
+                } else {
+                    isFullscreen = false;
+                    resumeAutoTimer();
+                }
             });
 
             // Re-mute a card when it scrolls out of view
@@ -3668,10 +3697,12 @@
                     d.classList.toggle('active', i === vrIndex);
                 });
                 updateVrPlayback();
-                clearInterval(vrAutoTimer);
-                vrAutoTimer = setInterval(function () {
-                    vrGoTo(vrIndex >= getVrMaxIndex() ? 0 : vrIndex + 1);
-                }, VR_INTERVAL);
+                if (!isFullscreen) {
+                    clearInterval(vrAutoTimer);
+                    vrAutoTimer = setInterval(function () {
+                        vrGoTo(vrIndex >= getVrMaxIndex() ? 0 : vrIndex + 1);
+                    }, VR_INTERVAL);
+                }
             }
 
             prevBtn.addEventListener('click', function () { vrGoTo(vrIndex - 1); });
@@ -3687,7 +3718,7 @@
                 var diff = dragStartX - dragCurrentX;
                 if (Math.abs(diff) > 50) {
                     vrGoTo(diff > 0 ? vrIndex + 1 : vrIndex - 1);
-                } else {
+                } else if (!isFullscreen) {
                     vrAutoTimer = setInterval(function () { vrGoTo(vrIndex >= getVrMaxIndex() ? 0 : vrIndex + 1); }, VR_INTERVAL);
                 }
             }
